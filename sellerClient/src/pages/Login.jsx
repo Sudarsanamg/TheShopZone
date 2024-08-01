@@ -12,7 +12,7 @@ const Login = () => {
         signInWithGoogle().then((user) => {
             // console.log(user);
             setUser(user);
-            console.log(user);
+            // console.log(user);
             const person={displayName:user.displayName,email:user.email,photoURL:user.photoURL};
             navigate('/home',{state:{user:person}});
         }).catch((error) => {
