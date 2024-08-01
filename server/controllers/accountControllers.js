@@ -75,6 +75,24 @@ exports.createSeller=async(req,res)=>{
 
 }
 
+exports.createSellervOauth=async(req,res)=>{
+    let seller=req.body.seller;
+    console.log('hitted the server')
+    console.log(seller)
+    try {
+         seller=new Seller(seller)
+
+   await seller.save()
+   const token = jwt.sign({ id: seller._id, username: seller.name }, process.env.SECKERT_ACCESS_TOKEN, { expiresIn: '1h' });
+    const refreshToken = jwt.sign({ id: seller._id, username: seller.name },process.env.REFRESH_ACCESS_TOKEN);
+    // Proceed with login
+    res.status(200).json({message:'Valid credentials',accessToken:token,refreshToken:refreshToken,seller:seller});
+    } catch (error) {
+        res.status(400).json({message:error})
+    }
+   
+}
+
 exports.loginSeller =async(req,res)=>{
     const {email,password}=req.body;
 
@@ -105,12 +123,15 @@ exports.loginSeller =async(req,res)=>{
 }
 
 exports.isPersonAvailable=async(req,res)=>{
-    const email=req.body.mail;
-    await Users.findOne({email:email}).then((user) => {
-        res.send(true);
-    }).catch((value) => {
-        res.send(false);
-    })
+    const email=req.body.email;
+
+    if(await Seller.findOne({email:email})){
+        res.send(true)
+    }
+    else{
+        res.send(false)
+    }
+    
     
     
 }
