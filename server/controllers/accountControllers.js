@@ -75,6 +75,35 @@ exports.createSeller=async(req,res)=>{
 
 }
 
+exports.loginSeller =async(req,res)=>{
+    const {email,password}=req.body;
+
+    const seller=await Seller.findOne({email:email})
+
+    if(seller){
+        const hashedPassword=seller.password;
+
+        bcrypt.compare(password, hashedPassword, (err, isMatch) => {
+            if (err) {
+              res.status(400).json({message:'Something error occurred'})
+            } else if (isMatch) {
+              const token = jwt.sign({ id: seller._id, username: seller.name }, process.env.SECKERT_ACCESS_TOKEN, { expiresIn: '1h' });
+              const refreshToken = jwt.sign({ id: seller._id, username: seller.name },process.env.REFRESH_ACCESS_TOKEN);
+              // Proceed with login
+              res.status(200).json({message:'Valid credentials',accessToken:token,refreshToken:refreshToken,seller:seller});
+              
+            } else {
+              res.status(400).json({message:'Ivalid credentials'})
+              // Deny access
+            }
+    })
+    }
+    else{
+        res.status(400).json({message:'User doesnt exist'})
+    }
+
+}
+
 exports.isPersonAvailable=async(req,res)=>{
     const email=req.body.mail;
     await Users.findOne({email:email}).then((user) => {
