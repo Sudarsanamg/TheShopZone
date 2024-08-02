@@ -18,25 +18,54 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = React.useState('');
     const [phone,setPhone] =React.useState('')
 
+
+    const createRandom=()=>{
+      let str="qwertyuiopasdfghjklzxcvbnm1234567890ASDFGHJKLQWERTYUIOPZXCVBNM";
+      let res=""
+      for(let i=0;i<8;i++){
+        let num=Math.random();
+        num=num*str.length
+        res+=str.charAt(num);
+      }
+      return res;
+    }
+
     const handleSignUpWithGoogle =async () => {
         signInWithGoogle().then(async(user) => {
             
             const person={displayName:user.displayName,email:user.email,photoURL:user.photoURL};
-
+            // console.log(person.email)
             let isPersonAvailable=await axios.post('http://localhost:3000/accounts/isPersonAvailable',{
               email:person.email
             })
 
-            console.log(isPersonAvailable);
+            
 
           
-            if(isPersonAvailable){
-              const response=await axios.post()
+            if(isPersonAvailable.data){
               alert('The email Id is already in use');
             }
             else{
+              const seller ={
+                name:person.displayName,
+                email:person.email,
+                password:createRandom(),
+                phone:1234567890
+              }
               
-            navigate('/home',{state:{user:person}});
+              await axios.post('http://localhost:3000/accounts/createSellervOauth',{
+                seller:seller
+              }).then((res)=>{
+                const accessToken=res.data.accessToken;
+                const refreshToken=res.data.refreshToken;
+                localStorage.setItem('accessToken',accessToken );
+                localStorage.setItem('refreshToken',refreshToken);
+                navigate('/home',{state:{user:person}});
+              }).catch((error)=>{
+                alert(error)
+              })
+
+           
             }
 
         }).catch((error) => {
