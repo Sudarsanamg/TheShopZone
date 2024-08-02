@@ -18,14 +18,16 @@ const Login = () => {
             setUser(user);
             // console.log(user);
             const person={displayName:user.displayName,email:user.email,photoURL:user.photoURL};
-            let isPersonAvailable=await axios.post('http://localhost:3000/accounts/isPersonAvailable',{
+           
+            const response=await axios.post('http://localhost:3000/accounts/loginSellervOAuth',{
               email:person.email
             })
-            // console.log(isPersonAvailable.data);
-            if(isPersonAvailable.data){
+
+            localStorage.setItem('accessToken',response.data.accessToken);
+            localStorage.setItem('refreshToken',response.data.refreshToken);
               
             navigate('/home',{state:{user:person}});
-            }
+            
         }).catch((error) => {
             console.log(error);
         });

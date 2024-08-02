@@ -14,6 +14,9 @@ connectDB();
 
 app.use('/accounts',accountRouter)
 app.use('/products',productRouter)
+app.get('/token',(req,res)=>{
+    
+})
 
 app.get('/', (req, res) => res.send('Hello World!'))
 

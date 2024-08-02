@@ -10,7 +10,7 @@ router.post('/createSeller',accountController.createSeller)
 router.post('/loginSeller',accountController.loginSeller)
 //with google seller
 router.post('/createSellervOauth',accountController.createSellervOauth)
-
+router.post('/loginSellervOAuth',accountController.loginSellervOAuth)
 
 router.post('/isPersonAvailable',accountController.isPersonAvailable)
 
