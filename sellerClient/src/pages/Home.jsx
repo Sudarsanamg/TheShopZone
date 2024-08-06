@@ -1,6 +1,8 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { signInWithGoogle, signOutFromGoogle } from '../firebaseconfig.js';
+
 import axios from 'axios'
 
 
@@ -16,7 +18,12 @@ const Home = () => {
     const routeAddProduct =()=>{
       navigate('/addProduct')
     }
-    console.log(user)
+    // console.log(user)
+
+    const SignOut=()=>{
+      signOutFromGoogle().then(navigate('/'))
+    }
+
     React.useEffect(()=>{
       const getProducts=async()=>{
         console.log(accessToken)
@@ -40,11 +47,13 @@ const Home = () => {
     
     <div>
       <button onClick={routeAddProduct}>AddProduct</button>
+      <button onClick={SignOut}>SignOut</button>
+
       {user.displayName}
       {products.map(doc=>(
         <div key={doc.id}>
         <p >{doc.name}</p>
-        <img src={doc.image} alt="" />
+        
         </div>
       ))
     }
