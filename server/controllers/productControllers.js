@@ -59,3 +59,14 @@ exports.deleteProduct=async(req,res)=>{
         console.log(error)
     }
 }
+
+exports.getProduct=async(req,res)=>{
+   const email=req.body.email;
+   if(email){
+    await Seller.findOne({email:email}).then((d)=>{const products=d.products;
+         res.status(200).json({products:products})}).catch((error)=>console.log(error))
+   }
+   else{
+    res.status(404).json({message:'Something is wrong'})
+   }
+}

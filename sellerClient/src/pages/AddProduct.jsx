@@ -45,7 +45,7 @@ const AddProduct = () => {
                 }
 
           try {
-            const response=await axios.post('http://localhost:3000/products/addProduct', 
+            const response=await axios.post('http://localhost:3000/products/getProducts', 
               { product:product},{
                 headers: {
                   'Authorization': `Bearer ${accessToken}`,

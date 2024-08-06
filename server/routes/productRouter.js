@@ -9,5 +9,6 @@ const authenticateJWT=require('../auth.js')
 route.post('/addProduct',authenticateJWT,productController.addNewProduct)
 route.delete('/deleteProduct',productController.deleteProduct)
 route.put('/updateProduct',productController.editProduct)
+route.post('/getProducts',productController.getProduct)
 
 module.exports=route
