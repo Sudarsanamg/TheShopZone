@@ -79,6 +79,7 @@ exports.createSellervOauth=async(req,res)=>{
     let seller=req.body.seller;
     // console.log('hitted the server')
     // console.log(seller)
+
     try {
          seller=new Seller(seller)
 
@@ -95,6 +96,7 @@ exports.createSellervOauth=async(req,res)=>{
 
 exports.loginSeller =async(req,res)=>{
     const {email,password}=req.body;
+
 
     const seller=await Seller.findOne({email:email})
 
@@ -124,7 +126,7 @@ exports.loginSeller =async(req,res)=>{
 
 
 exports.loginSellervOAuth=async(req,res)=>{
-    
+    console.log('hitted server')
     const {email}=req.body;
     const seller=await Seller.findOne({email:email})
     if(seller){

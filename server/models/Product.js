@@ -21,15 +21,15 @@ const ProductSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    // sellername:{
-    //     type:String,
-    //     required:true
-    // },
-    // selleremail:{
-    //     type:String,
-    //     required:true,
-    //     unique:true
-    // },
+    sellername:{
+        type:String,
+        required:true
+    },
+    selleremail:{
+        type:String,
+        required:true,
+        unique:true
+    },
     price:{
         type:Number,
         required:true
@@ -46,19 +46,19 @@ const ProductSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    // quantity:{
-    //     type:Number,
-    //     required:true
-    // },
-    // rating:{
-    //     type:Number,
-    //     required:true
-    // },
-    // comments:{
-    //     type:[commentSchema],
-    //     default:[]
+    quantity:{
+        type:Number,
+        required:true
+    },
+    rating:{
+        type:Number,
+        default:0
+    },
+    comments:{
+        type:[commentSchema],
+        default:[]
        
-    // }
+    }
 })
 
 module.exports = mongoose.model('Product', ProductSchema);

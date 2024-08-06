@@ -14,4 +14,8 @@ router.post('/loginSellervOAuth',accountController.loginSellervOAuth)
 
 router.post('/isPersonAvailable',accountController.isPersonAvailable)
 
+
+
+
+
 module.exports=router

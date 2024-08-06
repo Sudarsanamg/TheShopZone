@@ -7,10 +7,12 @@ import axios from 'axios';
 
 const Login = () => {
 
+   localStorage.removeItem('accessToken')
     const [user, setUser] = React.useState(null);
     const [email,setEmail]=React.useState('')
     const [password,setPassword]=React.useState('')
     const navigate = useNavigate();
+
 
     const handleLoginGoogle =async () => {
         signInWithGoogle().then(async(user) => {
@@ -22,6 +24,7 @@ const Login = () => {
             const response=await axios.post('http://localhost:3000/accounts/loginSellervOAuth',{
               email:person.email
             })
+            localStorage.removeItem('accessToken');
 
             localStorage.setItem('accessToken',response.data.accessToken);
             localStorage.setItem('refreshToken',response.data.refreshToken);

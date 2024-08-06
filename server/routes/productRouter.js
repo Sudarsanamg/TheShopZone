@@ -2,8 +2,11 @@ const express=require('express')
 
 const route=express.Router();
 const productController=require('../controllers/productControllers')
+const authenticateJWT=require('../auth.js')
 
-route.post('/addProduct',productController.addNewProduct)
+
+
+route.post('/addProduct',authenticateJWT,productController.addNewProduct)
 route.delete('/deleteProduct',productController.deleteProduct)
 route.put('/updateProduct',productController.editProduct)
 

@@ -3,13 +3,28 @@ const mongoose=require('mongoose')
 const { BlobServiceClient } = require('@azure/storage-blob');
 const fs = require('fs');
 const path = require('path');
-
+const Seller = require('../models/Seller');
 
 
 exports.addNewProduct=async(req,res)=>{
     const data=req.body;
+    console.log(data);
+    const accessToken=data.accessToken;
 
-    let prod=new product(data);
+    const user=req.user;
+
+    console.log(user);
+
+
+
+
+
+
+
+    let prod=new product(data.product);
+    await Seller.findByIdAndUpdate(user.id,{ $push: { products: prod } }, )
+
+    
 
     try {
         prod= await prod.save();
