@@ -21,7 +21,16 @@ const Home = () => {
     // console.log(user)
 
     const SignOut=()=>{
-      signOutFromGoogle().then(navigate('/'))
+      try {
+        signOutFromGoogle().then(navigate('/')).catch((e)=>{
+          localStorage.removeItem('accessToken')
+        navigate('/')
+        })
+
+      } catch (error) {
+        localStorage.removeItem('accessToken')
+        navigate('/')
+      }
     }
 
     React.useEffect(()=>{
