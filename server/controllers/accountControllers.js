@@ -75,24 +75,25 @@ exports.createSeller=async(req,res)=>{
 
 }
 
-exports.createSellervOauth=async(req,res)=>{
-    let seller=req.body.seller;
-    // console.log('hitted the server')
-    // console.log(seller)
+exports.createSellervOauth = async (req, res) => {
+    let seller = req.body;
+    console.log('hitted the createSellervOauth');
+    console.log(seller);
 
     try {
-         seller=new Seller(seller)
+        seller = new Seller(seller);
+        await seller.save();
+        console.log(seller);
 
-   await seller.save()
-   const token = jwt.sign({ id: seller._id, username: seller.name }, process.env.SECKERT_ACCESS_TOKEN, { expiresIn: '1h' });
-    const refreshToken = jwt.sign({ id: seller._id, username: seller.name },process.env.REFRESH_ACCESS_TOKEN);
-    // Proceed with login
-    res.status(200).json({message:'Valid credentials',accessToken:token,refreshToken:refreshToken,seller:seller});
+        const token = jwt.sign({ id: seller._id, username: seller.name }, process.env.SECKERT_ACCESS_TOKEN, { expiresIn: '1h' });
+        const refreshToken = jwt.sign({ id: seller._id, username: seller.name }, process.env.REFRESH_ACCESS_TOKEN);
+        res.status(200).json({ message: 'Valid credentials', accessToken: token, refreshToken: refreshToken, seller: seller });
     } catch (error) {
-        res.status(400).json({message:error})
+        console.error(error);
+        res.status(400).json({ message: error.message });
     }
-   
 }
+
 
 exports.loginSeller =async(req,res)=>{
     const {email,password}=req.body;
