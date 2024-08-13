@@ -1,0 +1,23 @@
+{
+    "servers": [
+      {
+        "name": "Server 1",
+        "port": 3000,
+        "host": "localhost",
+        "message": "Hello from main server"
+      },
+      {
+        "name": "Server 2",
+        "port": 3004,
+        "host": "localhost",
+        "message": "Hello from AuthServer"
+      },
+      {
+        "name": "Server 3",
+        "port": 5000,
+        "host": "localhost",
+        "message": "Hello from cloud connection server"
+      }
+    ]
+  }
+  
