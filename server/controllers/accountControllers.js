@@ -76,12 +76,14 @@ exports.createSeller=async(req,res)=>{
 }
 
 exports.createSellervOauth = async (req, res) => {
-    let seller = req.body;
+    let seller = req.body.seller;
+
     console.log('hitted the createSellervOauth');
-    console.log(seller);
+
 
     try {
         seller = new Seller(seller);
+        console.log(seller)
         await seller.save();
         console.log(seller);
 
