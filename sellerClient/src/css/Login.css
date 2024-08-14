@@ -1,100 +1,219 @@
 /* Login.css */
-.container {
+.Login_container {
+  position: fixed;
+  /* Fixes the container relative to the viewport */
+  top: 50%;
+  /* Centers the container vertically */
+  left: 50%;
+  /* Centers the container horizontally */
+  transform: translate(-50%, -50%);
+  /* Adjusts the position to center the container exactly */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #f7fafc;
-  padding: 20px;
-}
-
-h1 {
-  margin-bottom: 20px;
-  font-size: 2rem;
-  color: #333;
-}
-
-input[type="text"],
-input[type="password"] {
   width: 100%;
-  max-width: 400px;
-  padding: 10px;
+  max-width: 320px;
+  max-height: 420px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 40px 50px 60px 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  margin: auto;
+}
+
+
+.login_head {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #2d3748;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.input-field {
+  width: 85%;
+  max-width: 320px;
   margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e0;
+  /* Light gray border for consistency */
   box-sizing: border-box;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  background-color: #f7fafc;
+  color: #2d3748;
+  /* Text color to match the design */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-input[type="checkbox"] {
-  margin-right: 10px;
+.input-field:focus {
+  /* Blue border on focus to match button color */
+  box-shadow: 0 0 5px rgba(10, 24, 36, 0.5);
+  /* Subtle blue shadow on focus */
+  background-color: #ffffff;
+  outline: none;
 }
 
-label {
-  margin-bottom: 20px;
-  color: #333;
-}
+/* input[type="checkbox"] {
+  margin-right: 8px;
+} */
 
-button {
-  width: 100%;
-  max-width: 400px;
-  padding: 10px;
+/* .remember-me {
+  margin-bottom: 10px;
+  color: #327dff;
+  font-size: 1rem;
+} */
+
+.btn-login {
+  width: 85%;
+  padding: 12px;
   margin: 20px 0;
   color: white;
-  background-color: #4299e1;
+  background-color: #388fd7;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1rem;
+  text-align: center;
 }
 
-button:hover {
-  background-color: #2b6cb0;
+.btn-login:hover {
+  background-color: #1d6abc;
 }
 
-p {
+.btn-login:active {
+  background-color: #858686;
+}
+
+.btn-google {
+  width: 100%;
+  padding: 12px;
+  margin: 20px 0;
+  color: white;
+  background-color: #db4437;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.btn-google:hover {
+  background-color: #c23321;
+  transform: translateY(-2px);
+}
+
+.btn-google:active {
+  background-color: #a52714;
+  transform: translateY(0);
+}
+
+.other {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.p {
   margin: 10px 0;
-  color: #666;
+  color: #718096;
+  font-size: 0.9rem;
 }
 
-a {
+.sign-link {
   color: #4299e1;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-a:hover {
+.sign-link:hover {
+  color: #2b6cb0;
   text-decoration: underline;
-}
-
-.developer {
-  margin-top: 30px;
-  font-size: 0.9rem;
-  color: #aaa;
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
-  h1 {
+  .login_head {
     font-size: 1.5rem;
   }
 
   input[type="text"],
   input[type="password"],
-  button {
+  .btn-google,
+  .btn-login {
     max-width: 100%;
   }
 }
 
 @media (max-width: 480px) {
-  h1 {
+  .Login_container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .login_head {
     font-size: 1.2rem;
   }
 
-  label {
-    margin-bottom: 10px;
+  .remember-me {
+    margin-bottom: 5px;
   }
 
-  button {
+  .btn-google,
+  .btn-login {
     margin: 15px 0;
   }
+}
+
+
+.btn-google-icon,
+.btn-facebook-icon {
+  width: 30px;
+  height: 30px;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-google-icon {
+  background-color: #db4437;
+}
+
+.btn-google-icon:hover {
+  background-color: #c23321;
+  transform: translateY(-2px);
+}
+
+.btn-google-icon:active {
+  background-color: #a52714;
+  transform: translateY(0);
+}
+
+.btn-facebook-icon {
+  background-color: #3b5998;
+}
+
+.btn-facebook-icon:hover {
+  background-color: #2d4373;
+  transform: translateY(-2px);
+}
+
+.btn-facebook-icon:active {
+  background-color: #1d305a;
+  transform: translateY(0);
+}
+
+.Other-login {
+  display: flex;
+  width: 100px;
+  justify-content: space-around;
 }
