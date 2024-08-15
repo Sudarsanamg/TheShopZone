@@ -21,11 +21,12 @@ app.get('/', (req, res) => res.send('Hello World!'))
 
 
 app.post('/authenticateJWT', async(req, res) => {
+ 
   const authHeader = req.body.headers.Authorization;
-//   console.log(authHeader)
+  // console.log(authHeader)
   if (authHeader) {
     const token = authHeader.split(' ')[1];
-    console.log(token)
+    // console.log(token)
 
     jwt.verify(token, process.env.SECKERT_ACCESS_TOKEN, async(err, user) => {
       if (err) {
@@ -33,6 +34,7 @@ app.post('/authenticateJWT', async(req, res) => {
       }
       console.log(user.id);
       const seller=await Seller.findOne({_id: new ObjectId(user.id)})
+      console.log(seller)
       return res.status(200).json({user:seller});
     });
   } else {
