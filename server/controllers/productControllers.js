@@ -7,14 +7,16 @@ const Seller = require('../models/Seller');
 
 
 exports.addNewProduct=async(req,res)=>{
+    console.log('hitted the server of add new product')
     const data=req.body;
     console.log(data);
     const accessToken=data.accessToken;
 
     const user=req.user;
 
-    console.log(user);
+    // console.log(user);
 
+    
 
 
 
@@ -27,8 +29,9 @@ exports.addNewProduct=async(req,res)=>{
     
 
     try {
-        prod= await prod.save();
+        await prod.save();
         res.status(200).json('Product added successfully')
+        
     } catch (error) {
         console.log(error)
     }

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"nodemon index.js\" \"nodemon AuthUser.js\" \"nodemon uploadImage.js\" ",
+    "start": "concurrently \"nodemon index.js\" \"nodemon AuthSeller.js\" \"nodemon uploadImage.js\" ",
     "startAuthServer": "nodemon AuthServer.js",
     "startUploadImageServer": "nodemon uploadImage.js"
   },
