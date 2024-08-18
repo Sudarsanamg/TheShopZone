@@ -23,7 +23,6 @@ app.get('/', (req, res) => res.send('Hello World!'))
 app.post('/authenticateJWT', async(req, res) => {
  
   const authHeader = req.body.headers.Authorization;
-  // console.log(authHeader)
   if (authHeader) {
     const token = authHeader.split(' ')[1];
     // console.log(token)
@@ -32,9 +31,9 @@ app.post('/authenticateJWT', async(req, res) => {
       if (err) {
         return res.sendStatus(403); // Forbidden
       }
-      console.log(user.id);
+      // console.log(user.id);
       const seller=await Seller.findOne({_id: new ObjectId(user.id)})
-      console.log(seller)
+      // console.log(seller)
       return res.status(200).json({user:seller});
     });
   } else {

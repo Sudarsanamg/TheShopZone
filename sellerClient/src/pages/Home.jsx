@@ -23,6 +23,11 @@ const Home = () => {
     }
     // console.log(user)
 
+    const routeHandleMyProducts =()=>{
+      
+      navigate('/myProducts')
+    }
+
     const SignOut=()=>{
       try {
         signOutFromGoogle().then(navigate('/')).catch((e)=>{
@@ -37,6 +42,10 @@ const Home = () => {
     }
 
     React.useEffect(()=>{
+      // console.log(accessToken)
+      if(accessToken==null){
+        navigate('/')
+      }
       const getProducts=async()=>{
         // console.log(accessToken)
         try {
@@ -57,21 +66,14 @@ const Home = () => {
     },[])
 
   return (
-    
     <div>
       <button onClick={routeAddProduct}>AddProduct</button>
       <button onClick={SignOut}>SignOut</button>
       <p>
       {user.name}
       </p>
-      {products.map(doc=>(
-        <div key={doc.id}>
-        <p >{doc.name}</p>
-        </div>
-      ))
-    }
+      <button onClick={routeHandleMyProducts}>My products</button>
       
-
       
     </div>
   )
