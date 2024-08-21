@@ -1,0 +1,26 @@
+.popular h1{
+    font-family: "Outfit", sans-serif;
+    display: 1;
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+}
+hr{
+    border:none;
+    background: #eb423f;
+    width:80%;
+    height:2.5px;
+    margin-top: 3px;
+    margin-bottom: 0px;
+    border-radius: 3px;
+}
+.popular-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 20px;
+    font-family: "Outfit", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+}
+
