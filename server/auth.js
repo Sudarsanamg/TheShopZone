@@ -7,7 +7,7 @@ const authenticateJWT = (req, res, next) => {
   // console.log(req.headers)
   if (authHeader) {
     const token = authHeader.split(' ')[1];
-    console.log("token "+token)
+    // console.log("token "+token)
 
     jwt.verify(token, process.env.SECKERT_ACCESS_TOKEN, (err, user) => {
       if (err) {

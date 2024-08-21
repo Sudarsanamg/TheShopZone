@@ -16,13 +16,6 @@ exports.addNewProduct=async(req,res)=>{
 
     // console.log(user);
 
-    
-
-
-
-
-
-
     let prod=new product(data.product);
     await Seller.findByIdAndUpdate(user.id,{ $push: { products: prod } }, )
 
@@ -38,18 +31,39 @@ exports.addNewProduct=async(req,res)=>{
 }
 
 exports.editProduct=async(req,res)=>{
+    console.log('hitted edit function')
     const id=req.body.id;
-    console.log(id)
+    // console.log(id)
     const data=req.body.data;
     console.log(data)
+    const seller =req.user;
+    // console.log(user);
     try {
         await product.findByIdAndDelete(id);
         const prod=new product(data)
         await prod.save()
+        //update in seller
+        // const sel=await Seller.findById(seller._id)
+        console.log(seller)
+        
+       
+        await Seller.updateOne(
+            { _id:seller.id },
+            { $pull: { products: { _id:new mongoose.Types.ObjectId(id) } } }
+        ).then(result => {
+            console.log("Product removed successfully:", result);
+          })
+          .catch(error => {
+            console.error("Error removing product:", error);
+          });
+        // let newProd=new product(data);
+        await Seller.findByIdAndUpdate(seller.id,{ $push: { products: prod } }, )
+      
         res.status(200).json({message:'Product updated successfully'})
-
+        
     } catch (error) {
         console.log(error)
+        res.status(404).json({error:error})
     }
 }
 
