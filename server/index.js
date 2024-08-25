@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+
+
 const cors = require('cors')
 const connectDB=require('./connectDB')
 app.use(cors())
@@ -12,11 +14,10 @@ const productRouter=require('./routes/productRouter')
 
 connectDB();
 
+
 app.use('/accounts',accountRouter)
 app.use('/products',productRouter)
-app.get('/token',(req,res)=>{
-    
-})
+
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
