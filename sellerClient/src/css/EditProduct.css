@@ -1,0 +1,61 @@
+/* Container styling */
+.edit-product-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Input and textarea styling */
+  .edit-product-input, .edit-product-textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .edit-product-input:focus, .edit-product-textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Button styling */
+  .edit-product-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-product-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .edit-product-container {
+      padding: 15px;
+    }
+  
+    .edit-product-input, .edit-product-textarea {
+      font-size: 14px;
+    }
+  
+    .edit-product-button {
+      font-size: 14px;
+      padding: 10px 15px;
+    }
+  }

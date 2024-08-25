@@ -50,7 +50,7 @@ const SignUp = () => {
                 name:person.displayName,
                 email:person.email,
                 password:createRandom(),
-                phone:1234567999884490
+                phone:12345674199884490
               }
               console.log(seller)
               try {

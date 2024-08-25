@@ -6,6 +6,7 @@ import SignUp from './pages/SignUp';
 import Home from './pages/Home';
 import AddProduct from './pages/AddProduct';
 import MyProducts from './pages/MyProducts';
+import EditProduct from './pages/EditProduct';
 
 function App() {
  
@@ -19,6 +20,7 @@ function App() {
           <Route path="/home" Component={Home} />
           <Route path='/addProduct' Component={AddProduct} />
           <Route path='/myProducts' Component={MyProducts} />
+          <Route path='/editProduct' Component={EditProduct}/>
         </Routes>
       </Router>
     </>

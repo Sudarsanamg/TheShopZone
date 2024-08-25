@@ -1,10 +1,14 @@
-/* Container styling */
+
+  
+  /* Container styling */
 .container {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    margin: auto auto;
+    padding: 40px 20px; /* Added padding at top and bottom */
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+    overflow: scroll;
+    
   }
   
   /* Back button styling */
