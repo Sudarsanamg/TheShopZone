@@ -68,9 +68,21 @@ exports.editProduct=async(req,res)=>{
 }
 
 exports.deleteProduct=async(req,res)=>{
+    // consoloe.log('Hitted delete server')
     const id=req.body.id;
+    const seller =req.user;
+
     try {
         await product.findByIdAndDelete(id);
+        await Seller.updateOne(
+            { _id:seller.id },
+            { $pull: { products: { _id:new mongoose.Types.ObjectId(id) } } }
+        ).then(result => {
+            console.log("Product removed successfully:", result);
+          })
+          .catch(error => {
+            console.error("Error removing product:", error);
+          });
         res.status(200).json({message:"Successfully deleted"})
     } catch (error) {
         console.log(error)
