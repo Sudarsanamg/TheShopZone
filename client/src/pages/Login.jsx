@@ -14,7 +14,7 @@ const Login = () => {
             setUser(user);
             console.log(user);
             const person={displayName:user.displayName,email:user.email,photoURL:user.photoURL};
-            navigate('/home',{state:{user:person}});
+            navigate('/',{state:{user:person}});
         }).catch((error) => {
             console.log(error);
         });

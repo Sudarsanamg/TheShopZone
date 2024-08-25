@@ -18,7 +18,7 @@ const SignUp = () => {
         signInWithGoogle().then((user) => {
             
             const person={displayName:user.displayName,email:user.email,photoURL:user.photoURL};
-            navigate('/home',{state:{user:person}});
+            navigate('/',{state:{user:person}});
 
         }).catch((error) => {
             console.log(error);
@@ -49,7 +49,7 @@ const SignUp = () => {
       <input type="password"value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="Confirm Password" />
       <button onClick={handleSignUp}>Sign Up</button>
       <label>Already have an account?</label>
-      <a href="/">Login</a>
+      <a href="/login">Login</a>
       <p>or</p>
         <button onClick={handleSignUpWithGoogle}>Continue with Google</button>
     </div>
