@@ -1,10 +1,3 @@
-import Header from "./components/Header/navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Shop from "./pages/shop";
-import Product from "./pages/product";
-import Cart from "./pages/cart";
-import Shop_category from "./pages/shop_category";
-import Login_page from "./pages/login_page";
 
 function App() {
   return (
