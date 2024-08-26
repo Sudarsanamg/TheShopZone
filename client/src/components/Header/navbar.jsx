@@ -4,6 +4,7 @@ import cart_image from '../assets/cart_icon.png'
 import { useState } from 'react'
 import './navbar.css'
 import { Link } from 'react-router-dom'
+import Search from '../Search/Search'
 
 const Header = (param) =>{
 const [menu,setMenu] = useState("shop");
@@ -25,8 +26,8 @@ const [user,setUser] =React.useState("");
       <img className='logo' src={logo_image} alt="logo" />
         <h1 className='brand'><span className='D'>D</span> Mart</h1>
     </div>
+    <Search />
       <ul className='menu'>
-          <input type="text" placeholder='search' />
           <li onClick={()=>{setMenu("shop")}}><Link style={{textDecoration:'none'}} to='/'>Shop</Link>{(menu==="shop")?<hr/>:<></>}</li>
           <li onClick={()=>{setMenu("mens")}}><Link style={{textDecoration:'none'}} to='/mens'>Mens</Link>{(menu==="mens")?<hr/>:<></>}</li>
           <li onClick={()=>{setMenu("womens")}}><Link style={{textDecoration:'none'}} to='/womens'>Womens</Link>{(menu==="womens")?<hr/>:<></>}</li>

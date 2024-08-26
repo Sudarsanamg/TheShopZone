@@ -6,6 +6,25 @@ const path = require('path');
 const Seller = require('../models/Seller');
 
 
+exports.searchProduct =async(req,res)=>{
+    const {search}=req.query;
+    console.log(search);
+    // const searchTerm = 'some value';
+    const regex = new RegExp(search, 'i');
+    try {
+    
+        await product.find({name:regex}).limit(4).then((resp)=>  res.send(resp));
+        // console.log(products);
+
+
+    } catch (error) {
+        console.log(error)
+    }
+
+   
+}
+
+
 exports.addNewProduct=async(req,res)=>{
     console.log('hitted the server of add new product')
     const data=req.body;

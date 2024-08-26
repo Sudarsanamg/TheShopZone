@@ -6,7 +6,10 @@ import { useLocation } from 'react-router-dom'
 
 const Shop = () => {
   const location = useLocation();
-  const { user } = location.state;
+  let { user } = location.state;
+  if(user === null){
+    user ="";
+  }
   return (
     <>
     <Header props={user} />
