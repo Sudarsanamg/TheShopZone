@@ -9,6 +9,8 @@ import SignUp from './pages/SignUp';
 import Shop from "./pages/shop";
 // import Product from "./pages/product";
 import Cart from "./pages/cart";
+import ProductList from './pages/ProductList';
+import Product from './pages/Product';
 // import Shop_category from "./pages/shop_category";
 // import Login_page from "./pages/login_page";
 
@@ -25,6 +27,10 @@ function App() {
           <Route path="/signup" Component={SignUp} />
           {/* <Route path="/shop" element={<Shop />} />        */}
           <Route path='/cart' Component={Cart} />
+          <Route path='/productList' Component={ProductList} />
+          <Route path='/product' Component={Product}/>
+
+
          </Routes>
       </Router>
 

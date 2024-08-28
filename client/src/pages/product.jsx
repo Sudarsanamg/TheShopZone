@@ -1,9 +1,20 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom';
 
-const Product = () => {
+const product = () => {
+    const location = useLocation();
+    const {product}= location.state;
+
+
   return (
-    <div>product</div>
+    <div>
+        <p>{product.name}</p>
+        <img src={product.image} alt="" />
+        <p>{product.price}</p>
+        <button>Buy Now </button>
+        <button>Add to Cart</button>
+    </div>
   )
 }
 
-export default Product
+export default product
