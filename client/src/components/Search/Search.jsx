@@ -1,10 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 import "../../css/Search.css";
 
 const apiUrl = import.meta.env.VITE_API_MAIN_SERVER_URL;
 
 const Search = () => {
+  const navigate = useNavigate();
   const [query, setQuery] = React.useState("");
   const [response, setResponse] = React.useState([]);
 
@@ -22,6 +25,11 @@ const Search = () => {
     }
   };
 
+  const handleRoute =(e,name)=>{
+    // console.log(name)
+    navigate('/productList',{state:{productJson : response}});
+  }
+
   return (
     <div className="search-container">
       <input 
@@ -34,7 +42,7 @@ const Search = () => {
       {response.length >= 1 && (
         <div className="search-results">
           {response.map((item, index) => (
-            <div key={index} className="search-result-item">{item.name}</div>
+            <div key={index} className="search-result-item" onClick={(e)=>handleRoute(e,item.name)}  >{item.name}</div>
           ))}
         </div>
       )}
@@ -43,3 +51,4 @@ const Search = () => {
 };
 
 export default Search;
+<div className=""></div>
