@@ -27,7 +27,7 @@ const Search = () => {
 
   const handleRoute =(e,name)=>{
     // console.log(name)
-    navigate('/productList',{state:{productJson : response}});
+    navigate('/productList',{state:{productQuery : name}});
   }
 
   return (

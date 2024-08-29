@@ -10,6 +10,7 @@ const Shop = () => {
   if(user === null){
     user ="";
   }
+  
   return (
     <>
     <Header props={user} />
