@@ -6,6 +6,25 @@ const path = require('path');
 const Seller = require('../models/Seller');
 
 
+exports.searchProductAll=async(req,res)=>{
+    const {search}=req.query;
+    // console.log(search);
+    // const searchTerm = 'some value';
+    const regex = new RegExp(search, 'i');
+    try {
+    
+        await product.find({name:regex}).then((resp)=>  res.send(resp));
+        
+        // console.log(products);
+
+
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+
 exports.searchProduct =async(req,res)=>{
     const {search}=req.query;
     console.log(search);

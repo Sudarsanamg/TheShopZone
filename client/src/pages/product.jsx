@@ -5,6 +5,10 @@ const product = () => {
     const location = useLocation();
     const {product}= location.state;
 
+    const {user} =location.state;
+
+    console.log(user);
+
 
   return (
     <div>
