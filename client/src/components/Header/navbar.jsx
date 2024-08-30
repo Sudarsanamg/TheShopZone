@@ -11,7 +11,9 @@ const [menu,setMenu] = useState("shop");
 const [user,setUser] =React.useState("");
 
 
-  console.log(param.props.displayName)
+
+
+  // console.log(param.props.displayName)
   React.useEffect(()=>{
     if(param & param.props.displayName){
       setUser(param.props.displayName);
@@ -34,7 +36,7 @@ const [user,setUser] =React.useState("");
           <li onClick={()=>{setMenu("kids")}}><Link style={{textDecoration:'none'}} to='/kids'>Kids</Link>{(menu==="kids")?<hr/>:<></>}</li>
         </ul>
       <div>
-        <p> {param.props.displayName? "hello "+param.props.displayName+"  !" :"Login please.."}</p>
+        <p> {param & param.props.displayName? "hello "+param.props.displayName+"  !" :"Login please.."}</p>
       </div>
     
     <div className="nav-login">

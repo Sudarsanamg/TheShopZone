@@ -1,13 +1,13 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom';
 
-const product = () => {
+const Product = () => {
     const location = useLocation();
     const {product}= location.state;
 
     const {user} =location.state;
 
-    console.log(user);
+    console.log("user"+ user);
 
 
   return (
@@ -21,4 +21,4 @@ const product = () => {
   )
 }
 
-export default product
+export default Product

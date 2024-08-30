@@ -14,7 +14,7 @@ exports.searchProductAll=async(req,res)=>{
     try {
     
         await product.find({name:regex}).then((resp)=>  res.send(resp));
-        
+
         // console.log(products);
 
 
@@ -27,7 +27,7 @@ exports.searchProductAll=async(req,res)=>{
 
 exports.searchProduct =async(req,res)=>{
     const {search}=req.query;
-    console.log(search);
+    // console.log(search);
     // const searchTerm = 'some value';
     const regex = new RegExp(search, 'i');
     try {
@@ -47,7 +47,7 @@ exports.searchProduct =async(req,res)=>{
 exports.addNewProduct=async(req,res)=>{
     console.log('hitted the server of add new product')
     const data=req.body;
-    console.log(data);
+    // console.log(data);
     const accessToken=data.accessToken;
 
     const user=req.user;
