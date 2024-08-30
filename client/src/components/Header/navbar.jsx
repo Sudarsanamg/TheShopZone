@@ -6,6 +6,7 @@ import './navbar.css'
 import { Link } from 'react-router-dom'
 import Search from '../Search/Search'
 
+
 const Header = (param) =>{
 const [menu,setMenu] = useState("shop");
 const [user,setUser] =React.useState("");
