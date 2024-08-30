@@ -51,4 +51,3 @@ const Search = () => {
 };
 
 export default Search;
-<div className=""></div>

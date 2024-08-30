@@ -2,6 +2,7 @@ import React from 'react'
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Search from '../components/Search/Search';
 const main_server_URL = import.meta.env.VITE_API_MAIN_SERVER_URL;
 
 
@@ -35,7 +36,9 @@ const ProductList = () => {
       }
 
       fetchData();
-    },[])
+    },[productQuery])
+
+    
 
     // console.log(productQuery);
 
@@ -48,6 +51,8 @@ const ProductList = () => {
 
   return (
     <div>
+      <Search  />
+
         {productJson.length>0 && productJson.map((item,index)=>(
           <div key={index} onClick={()=> handleRouteToProduct(item)}>
             <p>{item.name}</p>
