@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/Login.css';
 import { signInWithGoogle, signOutFromGoogle } from '../firebaseconfig.js';
-import { useNavigate } from 'react-router-dom';
+import { json, useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
@@ -12,8 +12,12 @@ const Login = () => {
         signInWithGoogle().then((user) => {
             // console.log(user);
             setUser(user);
-            console.log(user);
+            const accessToken=user.accessToken;
+            localStorage.setItem('accessToken',accessToken);
+            
             const person={displayName:user.displayName,email:user.email,photoURL:user.photoURL};
+            // console.log(JSON.stringify(person))
+            localStorage.setItem('user',JSON.stringify(person));
             navigate('/',{state:{user:person}});
         }).catch((error) => {
             console.log(error);

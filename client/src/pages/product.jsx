@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 const Product = () => {
     const location = useLocation();
     const {product}= location.state;
-
+    
     const {user} =location.state;
 
     console.log("user"+ user);

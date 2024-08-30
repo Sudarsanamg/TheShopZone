@@ -7,10 +7,10 @@ import SignUp from './pages/SignUp';
 // import Home from './pages/Home';
 // import Header from "./components/Header/navbar";
 import Shop from "./pages/shop";
-// import Product from "./pages/product";
+import Product from "./pages/product";
 import Cart from "./pages/cart";
 import ProductList from './pages/ProductList';
-import Product from './pages/Product';
+// import Product from './pages/Product';
 // import Shop_category from "./pages/shop_category";
 // import Login_page from "./pages/login_page";
 
