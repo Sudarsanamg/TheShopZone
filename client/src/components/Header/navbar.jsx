@@ -36,7 +36,7 @@ const [user,setUser] =React.useState("");
           <li onClick={()=>{setMenu("kids")}}><Link style={{textDecoration:'none'}} to='/kids'>Kids</Link>{(menu==="kids")?<hr/>:<></>}</li>
         </ul>
       <div>
-        <p> {param & param.props.displayName? "hello "+param.props.displayName+"  !" :"Login please.."}</p>
+        <p> {param.props.displayName? "hello "+param.props.displayName+"  !" :"Login please.."}</p>
       </div>
     
     <div className="nav-login">
