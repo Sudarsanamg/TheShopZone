@@ -8,7 +8,7 @@ const Product = () => {
     const {user} =location.state;
 
     console.log("user"+ user);
-
+//  hbfdcndin
 
   return (
     <div>
