@@ -7,30 +7,30 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const Shop = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const user = location.state?.user;
-  const accessToken = localStorage.getItem('accessToken');
-
-
+  const {user} = location.state? location.state : {displayName:""};
+  // const accessToken = localStorage.getItem('accessToken');
+  console.log(user)
   useEffect(() => {
 
-    console.log('User:', user);
-    console.log('Access Token:', accessToken);
+    // console.log('User:', user);
+    // console.log('Access Token:', accessToken);
 
-    if (!accessToken || !user) {
+    if ( !user) {
       console.log('Redirecting to login...');
       navigate('/login');
     }
   }, []);
 
   // If navigating away, return null to prevent rendering
-  console.log('User outer:', user);
-    console.log('Access Token outer :', accessToken);
-  if (!localStorage.getItem('accessToken') || !user) {
+  // console.log('User outer:', user);
+  //   console.log('Access Token outer :', accessToken);
+  if (!user) {
     return null;
   }
 
   return (
     <>
+    {/* {user.displayName} */}
       <Header props={user} />
       <Shoptop />
       <Popular />
