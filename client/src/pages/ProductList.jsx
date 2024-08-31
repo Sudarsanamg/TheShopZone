@@ -25,6 +25,14 @@ const ProductList = () => {
     const [productJson,setProductJson]=React.useState([]);
 
 
+    const [filter, setFilter] = React.useState('');
+
+  const handleChange = (event) => {
+    setFilter(event.target.value);
+  };
+
+
+
     React.useEffect(()=>{
       
       const fetchData =async()=>{
@@ -45,6 +53,21 @@ const ProductList = () => {
       fetchData();
     },[productQuery])
 
+
+    React.useEffect(()=>{
+      if(filter==='option1'){
+        const sorted = [...productJson].sort();
+        setProductJson(sorted);
+
+      }
+      else if(filter==='option2'){
+        const sorted = [...productJson].sort((a, b) => b.price - a.price);
+        setProductJson(sorted);
+
+      }
+
+    },[filter])
+
     
 
     // console.log(productQuery);
@@ -59,6 +82,17 @@ const ProductList = () => {
   return (
     <div>
        <Header props={user}/>
+       
+      <label htmlFor="dropdown">Choose an option:</label>
+      <select id="dropdown" value={filter} onChange={handleChange}>
+        <option value="">Select...</option>
+        <option value="option1">Price Low to High</option>
+        <option value="option2">Price High to Low</option>
+        {/* <option value="option3">Option 3</option> */}
+      </select>
+      
+    
+
         {productJson.length>0 && productJson.map((item,index)=>(
           <div key={index} onClick={()=> handleRouteToProduct(item)}>
             <p>{item.name}</p>
