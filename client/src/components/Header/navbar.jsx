@@ -39,6 +39,10 @@ const [user,setUser] =React.useState("");
       <div>
         <p> {param.props.displayName? "hello "+param.props.displayName+"  !" :"Login please.."}</p>
       </div>
+      <div>
+        {/* {console.log(param.props.photoURL)} */}
+        <img src={param.props.photoURL} style={{maxHeight:60,maxWidth:60,borderRadius:15}} alt="image" />
+      </div>
     
     <div className="nav-login">
       <button className='login'><Link style={{textDecoration:'none'}} to='/login'>Logout</Link></button>

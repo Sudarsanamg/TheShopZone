@@ -8,7 +8,7 @@ const Product = () => {
     
     const user=JSON.parse(localStorage.getItem('user'));
 
-    // console.log("user"+ user);
+    console.log("user"+ JSON.stringify(user));
 //  hbfdcndin
 
   return (
