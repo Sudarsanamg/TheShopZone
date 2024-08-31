@@ -56,7 +56,7 @@ const ProductList = () => {
 
     React.useEffect(()=>{
       if(filter==='option1'){
-        const sorted = [...productJson].sort();
+        const sorted = [...productJson].sort((a,b)=>a.price-b.price);
         setProductJson(sorted);
 
       }
