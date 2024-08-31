@@ -2,7 +2,6 @@ import React from 'react'
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Search from '../components/Search/Search';
 import Header from '../components/Header/navbar';
 const main_server_URL = import.meta.env.VITE_API_MAIN_SERVER_URL;
 

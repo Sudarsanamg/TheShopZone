@@ -41,7 +41,7 @@ const [user,setUser] =React.useState("");
       </div>
     
     <div className="nav-login">
-      <button className='login'><Link style={{textDecoration:'none'}} to='/login'>Login</Link></button>
+      <button className='login'><Link style={{textDecoration:'none'}} to='/login'>Logout</Link></button>
       <Link to='/cart'><img className='cart' src={cart_image} alt="cart" /></Link>
       <div className="nav-cart-count">
         5+
