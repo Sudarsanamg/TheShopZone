@@ -65,8 +65,11 @@ exports.createUservOauth = async (req, res) => {
 exports.loginUservOAuth=async(req,res)=>{
     console.log("hitted server");
     const {email}=req.body;
-    const user=await User.findOne({email:email})
+    let user=await User.findOne({email:email}).select('-password');
+    
+   
     if(user){
+        // console.log(user);
         const token = jwt.sign({ id: user._id, username: user.name }, process.env.SECKERT_ACCESS_TOKEN, { expiresIn: '1h' });
         const refreshToken = jwt.sign({ id: user._id, username: user.name },process.env.REFRESH_ACCESS_TOKEN);
               // Proceed with login
