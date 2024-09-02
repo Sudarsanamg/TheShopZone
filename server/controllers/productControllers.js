@@ -4,6 +4,7 @@ const { BlobServiceClient } = require('@azure/storage-blob');
 const fs = require('fs');
 const path = require('path');
 const Seller = require('../models/Seller');
+const User = require('../models/User');
 
 
 exports.searchProductAll=async(req,res)=>{
@@ -41,6 +42,22 @@ exports.searchProduct =async(req,res)=>{
     }
 
    
+}
+
+exports.addToCart=async(req,res)=>{
+    let {user,product} = req.body;
+    try {
+        user=await User.findOne({email:user.email});
+        const userId=user._id;
+        await User.findByIdAndUpdate(userId,{ $push: { cart: product } }, )
+        res.status(200).send("ok")
+
+    } catch (error) {
+        console.log(error)
+        res.status(404);
+    }
+   
+    
 }
 
 

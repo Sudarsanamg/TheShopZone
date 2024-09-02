@@ -58,7 +58,6 @@ const ProductList = () => {
       if(filter==='option1'){
         const sorted = [...productJson].sort((a,b)=>a.price-b.price);
         setProductJson(sorted);
-
       }
       else if(filter==='option2'){
         const sorted = [...productJson].sort((a, b) => b.price - a.price);

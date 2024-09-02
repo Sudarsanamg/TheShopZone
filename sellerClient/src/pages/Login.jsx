@@ -23,7 +23,7 @@ const Login = () => {
             // console.log(user);
             const person={displayName:user.displayName,email:user.email,photoURL:user.photoURL};
            
-            const response=await axios.post('http://localhost:3000/accounts/loginSellervOAuth',{
+            const response=await axios.post('http://localhost:3000/accounts/loginUservOAuth',{
               email:person.email
             })
             localStorage.removeItem('accessToken');
@@ -31,7 +31,7 @@ const Login = () => {
             localStorage.setItem('accessToken',response.data.accessToken);
             localStorage.setItem('refreshToken',response.data.refreshToken);
               
-            navigate('/home',{state:{user:person}});
+            navigate('/',{state:{user:person}});
             
         }).catch((error) => {
             console.log(error);

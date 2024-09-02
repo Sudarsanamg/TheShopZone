@@ -41,6 +41,47 @@ exports.createUser=async(req,res)=>{
     }
 }
 
+exports.createUservOauth = async (req, res) => {
+    let user = req.body.user;
+
+    console.log('hitted the createuservOauth');
+
+
+    try {
+        user = new User(user);
+        // console.log(seller)
+        await user.save();
+        // console.log(seller);
+
+        const token = jwt.sign({ id: user._id, username: user.name }, process.env.SECKERT_ACCESS_TOKEN, { expiresIn: '1h' });
+        const refreshToken = jwt.sign({ id: user._id, username: user.name }, process.env.REFRESH_ACCESS_TOKEN);
+        res.status(200).json({ message: 'Valid credentials', accessToken: token, refreshToken: refreshToken, user: user });
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ message: error.message });
+    }
+}
+
+exports.loginUservOAuth=async(req,res)=>{
+    console.log("hitted server");
+    const {email}=req.body;
+    const user=await User.findOne({email:email})
+    if(user){
+        const token = jwt.sign({ id: user._id, username: user.name }, process.env.SECKERT_ACCESS_TOKEN, { expiresIn: '1h' });
+        const refreshToken = jwt.sign({ id: user._id, username: user.name },process.env.REFRESH_ACCESS_TOKEN);
+              // Proceed with login
+        res.status(200).json({message:'Valid credentials',accessToken:token,refreshToken:refreshToken,user:user});
+    }
+    else{
+        res.status(404).json({message:'Not found'})
+    }
+}
+
+
+
+
+
+
 
 exports.createSeller=async(req,res)=>{
     console.log('hitted server')
@@ -129,7 +170,7 @@ exports.loginSeller =async(req,res)=>{
 
 
 exports.loginSellervOAuth=async(req,res)=>{
-    console.log('hitted server')
+    // console.log('hitted server')
     const {email}=req.body;
     const seller=await Seller.findOne({email:email})
     if(seller){
@@ -147,9 +188,24 @@ exports.loginSellervOAuth=async(req,res)=>{
 
 
 
+
+//here person is seller 
 exports.isPersonAvailable=async(req,res)=>{
     const email=req.body.email;
     if(await Seller.findOne({email:email})){
+        res.send(true)
+    }
+    else{
+        res.send(false)
+    }
+    
+    
+    
+}
+
+exports.isUserAvailable=async(req,res)=>{
+    const email=req.body.email;
+    if(await User.findOne({email:email})){
         res.send(true)
     }
     else{

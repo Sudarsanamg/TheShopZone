@@ -29,6 +29,7 @@ function App() {
           <Route path='/cart' Component={Cart} />
           <Route path='/productList' Component={ProductList} />
           <Route path='/product' Component={Product}/>
+        
 
 
          </Routes>
