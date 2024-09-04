@@ -12,6 +12,9 @@ const [menu,setMenu] = useState("shop");
 const [user,setUser] =React.useState("");
 
 
+console.log(param)
+
+
 
 
   // console.log(param.props.displayName)
@@ -39,9 +42,13 @@ const [user,setUser] =React.useState("");
       <div>
         <p> {param.props.displayName? "hello "+param.props.displayName+"  !" :"Login please.."}</p>
       </div>
+      <div>
+        {/* {console.log(param.props.photoURL)} */}
+        <img src={param.props.photoURL} style={{maxHeight:60,maxWidth:60,borderRadius:15}} alt="image" />
+      </div>
     
     <div className="nav-login">
-      <button className='login'><Link style={{textDecoration:'none'}} to='/login'>Login</Link></button>
+      <button className='login'><Link style={{textDecoration:'none'}} to='/login'>Logout</Link></button>
       <Link to='/cart'><img className='cart' src={cart_image} alt="cart" /></Link>
       <div className="nav-cart-count">
         5+

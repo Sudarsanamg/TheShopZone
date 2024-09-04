@@ -23,9 +23,11 @@ const Login = () => {
             // console.log(user);
             const person={displayName:user.displayName,email:user.email,photoURL:user.photoURL};
            
-            const response=await axios.post('http://localhost:3000/accounts/loginSellervOAuth',{
+            const response=await axios.post('http://localhost:3000/accounts/loginUservOAuth',{
               email:person.email
             })
+
+            console.log(response)
             localStorage.removeItem('accessToken');
 
             localStorage.setItem('accessToken',response.data.accessToken);
