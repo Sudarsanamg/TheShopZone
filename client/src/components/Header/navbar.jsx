@@ -12,6 +12,9 @@ const [menu,setMenu] = useState("shop");
 const [user,setUser] =React.useState("");
 
 
+console.log(param)
+
+
 
 
   // console.log(param.props.displayName)

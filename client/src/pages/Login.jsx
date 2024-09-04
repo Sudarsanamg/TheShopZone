@@ -27,6 +27,8 @@ const Login = () => {
               email:person.email
             })
             localStorage.removeItem('accessToken');
+            console.log(response);
+            localStorage.setItem('UserId',response.data.user._id);
 
             localStorage.setItem('accessToken',response.data.accessToken);
             localStorage.setItem('refreshToken',response.data.refreshToken);

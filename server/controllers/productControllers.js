@@ -26,6 +26,20 @@ exports.searchProductAll=async(req,res)=>{
 }
 
 
+exports.getMyCart =async(req,res)=>{
+    const {userId}=req.body;
+
+    try {
+        const products=await User.findById(userId).select("cart")
+        // console.log(products);
+        res.status(200).json(products)
+    } catch (error) {
+        res.status(400).json({message:"There was an error "+error});
+    }
+   
+}
+
+
 exports.searchProduct =async(req,res)=>{
     const {search}=req.query;
     // console.log(search);

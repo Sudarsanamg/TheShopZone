@@ -8,6 +8,8 @@ const authenticateJWT=require('../auth.js')
 route.get('/searchProduct',productController.searchProduct)
 route.get('/searchProductAll',productController.searchProductAll)
 
+
+route.post('/getMyCart',productController.getMyCart);
 route.post('/addToCart',productController.addToCart)
 route.post('/addProduct',authenticateJWT,productController.addNewProduct)
 route.post('/deleteProduct',authenticateJWT,productController.deleteProduct)

@@ -30,7 +30,7 @@ const Shop = () => {
 
   return (
     <>
-    {/* {user.displayName} */}
+    
       <Header props={user} />
       <Shoptop />
       <Popular />

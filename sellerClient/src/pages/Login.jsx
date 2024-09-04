@@ -26,12 +26,14 @@ const Login = () => {
             const response=await axios.post('http://localhost:3000/accounts/loginUservOAuth',{
               email:person.email
             })
+
+            console.log(response)
             localStorage.removeItem('accessToken');
 
             localStorage.setItem('accessToken',response.data.accessToken);
             localStorage.setItem('refreshToken',response.data.refreshToken);
               
-            navigate('/',{state:{user:person}});
+            navigate('/home',{state:{user:person}});
             
         }).catch((error) => {
             console.log(error);
