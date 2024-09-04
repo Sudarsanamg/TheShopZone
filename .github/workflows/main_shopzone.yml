@@ -22,19 +22,11 @@ jobs:
         working-directory: ./server
         run: echo "Changed directory to server"
 
-      - name: Set environment variables
-        run: |
-          echo "MONGODBURL=${{ secrets.MONGODBURL }}" >> $GITHUB_ENV
-          echo "SECKERT_ACCESS_TOKEN=${{ secrets.SECKERT_ACCESS_TOKEN }}" >> $GITHUB_ENV
-          echo "REFRESH_ACCESS_TOKEN=${{ secrets.REFRESH_ACCESS_TOKEN }}" >> $GITHUB_ENV
-          echo "AZURE_STORAGE_CONNECTION_STRING=${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}" >> $GITHUB_ENV
-          echo "CONTAINER_NAME=${{ secrets.CONTAINER_NAME }}" >> $GITHUB_ENV
-
       - name: npm install, build, and test
         working-directory: ./server
         run: |
           npm install
-         
+          
 
       - name: Zip artifact for deployment
         working-directory: ./server
@@ -62,17 +54,9 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'shopzone'
-          slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: .
-        env:
-          MONGODBURL: ${{ secrets.MONGODBURL }}
-          SECKERT_ACCESS_TOKEN: ${{ secrets.SECKERT_ACCESS_TOKEN }}
-          REFRESH_ACCESS_TOKEN: ${{ secrets.REFRESH_ACCESS_TOKEN }}
-          AZURE_STORAGE_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-          CONTAINER_NAME: ${{ secrets.CONTAINER_NAME }}
