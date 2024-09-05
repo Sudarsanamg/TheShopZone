@@ -20,7 +20,6 @@ jobs:
 
       - name: Change directory to server
         working-directory: ./server
-        run: echo "Changed directory to server"
 
       - name: npm install, build, and test
         working-directory: ./server
@@ -48,10 +47,10 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: eb67ba76-f95e-4eac-b79e-e856ebbbf7d7
-          client-secret: O6y8Q~obh6xzSvJtEaPZwfFaXRvi48ExkFNcJbHi
-          tenant-id: c6417d2b-bcfe-436f-aab2-f4a6f483e788
-          subscription-id: 7849e98b-4af6-4eaf-9c2e-d0e5054c8459
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           auth-type: 'SERVICE_PRINCIPAL'
 
       - name: Download artifact from build job
