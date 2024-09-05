@@ -48,7 +48,7 @@ jobs:
         uses: azure/login@v2
         with:
           client-id: d8782e7e-4fa9-48dd-b552-3f18b61a9d7b
-          client-secret: Lb58Q~vz4JcPMX6cVRZsMgr893m5BHBKFUdZVaDN
+          client-secret: Lb58Qvz4JcPMX6cVRZsMgr893m5BHBKFUdZVaDN
           tenant-id: c6417d2b-bcfe-436f-aab2-f4a6f483e788
           subscription-id: 7849e98b-4af6-4eaf-9c2e-d0e5054c8459
           auth-type: 'SERVICE_PRINCIPAL'
