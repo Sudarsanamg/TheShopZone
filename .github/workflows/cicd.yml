@@ -24,7 +24,7 @@ jobs:
       - name: Build and Deploy
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'shopzone'
+          app-name: 'shopz'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           slot-name: 'production'
           package: .
