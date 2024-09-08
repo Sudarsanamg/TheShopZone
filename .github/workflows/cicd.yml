@@ -27,4 +27,4 @@ jobs:
           app-name: 'shopzone'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           slot-name: 'production'
-          package: 'server'
+          package: .
