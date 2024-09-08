@@ -15,12 +15,12 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18.x'
-      -name: Install Dependencies
-      run: cd server && npm install
+      - name: Install Dependencies
+        run: cd server && npm install
       -name: Build and Deploy
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'shopz'
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE}}
+        app-name: 'shopzone'
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
 
       
