@@ -21,6 +21,6 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'shopzone'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile}}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE}}
 
 
