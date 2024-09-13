@@ -5,7 +5,13 @@ const app = express()
 
 const cors = require('cors')
 const connectDB=require('./connectDB')
-app.use(cors())
+const allowedOrigin = 'https://the-shop-zone-git-main-sudarsanam-gs-projects.vercel.app';
+
+app.use(cors({
+    origin: allowedOrigin,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Define allowed methods if needed
+    credentials: true // Allow credentials (e.g., cookies) if necessary
+}));
 app.use(express.json())
 require('dotenv').config()
 const accountRouter=require('./routes/accountRoutes')
