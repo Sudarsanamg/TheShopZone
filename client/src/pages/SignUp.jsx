@@ -4,6 +4,7 @@ import '../css/SignUp.css';
 import axios from 'axios'
 import { signInWithGoogle } from '../firebaseconfig.js';
 import { useNavigate } from 'react-router-dom';
+const main_server_URL = import.meta.env.VITE_API_MAIN_SERVER_URL;
 
 
 
@@ -33,10 +34,12 @@ const SignUp = () => {
 
     const handleSignUpWithGoogle =async () => {
         signInWithGoogle().then(async(user) => {
+
+  
             
             const person={displayName:user.displayName,email:user.email,photoURL:user.photoURL};
-            // console.log(person.email)
-            let isUserAvailable=await axios.post('http://localhost:3000/accounts/isUserAvailable',{
+            console.log(person)
+            let isUserAvailable=await axios.post(`${main_server_URL}/accounts/isUserAvailable`,{
               email:person.email
             })
 
@@ -51,11 +54,11 @@ const SignUp = () => {
                 name:person.displayName,
                 email:person.email,
                 password:createRandom(),
-                phone:123456741998844
+
               }
-              console.log(user)
+              // console.log(user)
               try {
-                await axios.post('http://localhost:3000/accounts/createUservOauth',{
+                await axios.post(`${main_server_URL}/accounts/createUservOauth`,{
                   user:user
                 }).then((res)=>{
                   const accessToken=res.data.accessToken;
@@ -91,7 +94,7 @@ const SignUp = () => {
         password:password,
         phone:phone
       }
-      const response= await axios.post('http://localhost:3000/accounts/createSeller',{
+      const response= await axios.post(`${main_server_URL}/accounts/createSeller`,{
         data:data
       });
 

@@ -5,25 +5,43 @@ import { useState } from 'react'
 import './navbar.css'
 import { Link } from 'react-router-dom'
 import Search from '../Search/Search'
-
+import { useNavigate } from 'react-router-dom'
 
 const Header = (param) =>{
 const [menu,setMenu] = useState("shop");
-const [user,setUser] =React.useState("");
+let user =localStorage.getItem('person')
+user=JSON.parse(user)
 
+const navigate=useNavigate();
 
-console.log(param)
+// console.log(param)
 
 
 
 
   // console.log(param.props.displayName)
-  React.useEffect(()=>{
-    if(param & param.props.displayName){
-      setUser(param.props.displayName);
-    }
+  // React.useEffect(()=>{
+  //   if(param & param.props.displayName){
+  //     setUser(param.props.displayName);
+  //     console.log(param.props)
+  //   }
     
-  },[])
+  // },[])
+
+
+  const handleLogout =()=>{
+
+    localStorage.removeItem('person')
+            
+            localStorage.removeItem('accessToken');
+            // console.log(response);
+            localStorage.removeItem('refreshToken');
+            navigate('/login')
+
+            
+            
+
+  }
 
   return (
     <>
@@ -40,15 +58,15 @@ console.log(param)
           <li onClick={()=>{setMenu("kids")}}><Link style={{textDecoration:'none'}} to='/kids'>Kids</Link>{(menu==="kids")?<hr/>:<></>}</li>
         </ul>
       <div>
-        <p> {param.props.displayName? "hello "+param.props.displayName+"  !" :"Login please.."}</p>
+        <p> {user.displayName? "hello "+user.displayName+"  !" :"Login please.."}</p>
       </div>
       <div>
         {/* {console.log(param.props.photoURL)} */}
-        <img src={param.props.photoURL} style={{maxHeight:60,maxWidth:60,borderRadius:15}} alt="image" />
+        <img src={user.photoURL} style={{maxHeight:60,maxWidth:60,borderRadius:15}} alt="image" />
       </div>
     
     <div className="nav-login">
-      <button className='login'><Link style={{textDecoration:'none'}} to='/login'>Logout</Link></button>
+      <button className='login'  onClick={()=>handleLogout()}><Link style={{textDecoration:'none'}} to='/login'>Logout</Link></button>
       <Link to='/cart'><img className='cart' src={cart_image} alt="cart" /></Link>
       <div className="nav-cart-count">
         5+

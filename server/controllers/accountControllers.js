@@ -53,7 +53,7 @@ exports.createUservOauth = async (req, res) => {
         await user.save();
         // console.log(seller);
 
-        const token = jwt.sign({ id: user._id, username: user.name }, process.env.SECKERT_ACCESS_TOKEN, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user._id, username: user.name }, process.env.SECKERT_ACCESS_TOKEN);
         const refreshToken = jwt.sign({ id: user._id, username: user.name }, process.env.REFRESH_ACCESS_TOKEN);
         res.status(200).json({ message: 'Valid credentials', accessToken: token, refreshToken: refreshToken, user: user });
     } catch (error) {

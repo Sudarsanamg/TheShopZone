@@ -3,7 +3,7 @@ import '../css/Login.css';
 import { signInWithGoogle, signOutFromGoogle } from '../firebaseconfig.js';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+const main_server_URL = import.meta.env.VITE_API_MAIN_SERVER_URL;
 
 
 
@@ -23,11 +23,15 @@ const Login = () => {
             // console.log(user);
             const person={displayName:user.displayName,email:user.email,photoURL:user.photoURL};
            
-            const response=await axios.post('http://localhost:3000/accounts/loginUservOAuth ',{
+            const response=await axios.post(`${main_server_URL}/accounts/loginUservOAuth `,{
               email:person.email
             })
+
+            localStorage.removeItem('person')
+            let str=JSON.stringify(person)
+            localStorage.setItem('person',str);
             localStorage.removeItem('accessToken');
-            console.log(response);
+            // console.log(response);
             localStorage.setItem('UserId',response.data.user._id);
 
             localStorage.setItem('accessToken',response.data.accessToken);
@@ -41,7 +45,7 @@ const Login = () => {
     }
 
     const handlelogin =async()=>{
-      await axios.post('http://localhost:3000/accounts/loginSeller',{
+      await axios.post(`${main_server_URL}/accounts/loginSeller`,{
         email:email,
         password:password
       }).then((res)=>{
