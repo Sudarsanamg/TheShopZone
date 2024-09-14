@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 const main_server_URL = import.meta.env.VITE_API_MAIN_SERVER_URL;
 
-
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Login = () => {
 
@@ -88,13 +88,13 @@ const Login = () => {
   <p className="other">Login with</p>
 
   <div className="Other-login">
+  <div className="Other-login">
   <button className="btn-google-icon" onClick={handleLoginGoogle}>
     <i className="fab fa-google"></i> {/* Font Awesome Google Icon */}
   </button>
   
-  <button className="btn-facebook-icon">
-    <i className="fab fa-facebook-f"></i> {/* Font Awesome Facebook Icon */}
-  </button>
+ 
+</div>
 </div>
 
   

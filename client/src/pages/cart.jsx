@@ -1,52 +1,40 @@
 import axios from 'axios';
-import React from 'react'
+import React from 'react';
+import '../css/Cart.css'; // Import the CSS file for styling
 const main_server_URL = import.meta.env.VITE_API_MAIN_SERVER_URL;
 
-
 const Cart = () => {
-  // const sum=0;
-  // let user=JSON.parse(localStorage.getItem('user'));
+  const userId = localStorage.getItem("UserId");
+  const [cart, setCart] = React.useState([]);
 
-  // const [products,setProducts]=React.useState([])
-
-  // React.useEffect(async()=>{
-  //   user=await axios.get()
-  // },[])
-
-  const userId=localStorage.getItem("UserId");
-
-  const [cart,setCart]=React.useState([]);
-
-
-  React.useEffect(()=>{
-
-    const fetchData=async()=>{
-      await axios.post(`${main_server_URL}/products/getMyCart`,{
-        userId:userId
-      }).then((res)=>{
-        // console.log(res);
-        setCart(res.data.cart)}).catch((err)=>alert(err));
-
-    }
-    
+  React.useEffect(() => {
+    const fetchData = async () => {
+      await axios.post(`${main_server_URL}/products/getMyCart`, {
+        userId: userId
+      })
+      .then((res) => setCart(res.data.cart))
+      .catch((err) => alert(err));
+    };
 
     fetchData();
-  },[])
-
+  }, [userId]);
 
   return (
-    <div>
-      Cart
+    <div className="cart-container">
+      <h2 className="cart-title">My Cart</h2>
 
-      {cart.length>1 && cart.map((item,index)=>(
-        <div key={index}>
-        <p>{item.name}</p>
-        <button>Delete</button>
-        </div>
-      ))}
-
+      {cart.length > 0 ? (
+        cart.map((item, index) => (
+          <div className="cart-item" key={index}>
+            <p className="item-name">{item.name}</p>
+            <button className="delete-button">Delete</button>
+          </div>
+        ))
+      ) : (
+        <p className="empty-cart">Your cart is empty.</p>
+      )}
     </div>
-  )
+  );
 }
 
-export default Cart
+export default Cart;

@@ -1,135 +1,152 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+/* Global styles */
 
-
-/* Container for the entire navigation bar */
+/* Navigation bar styles */
 .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Logo and brand */
+.nav-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  max-width: 50px;
+  cursor: pointer;
+}
+
+.brand {
+  margin-left: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.brand .D {
+  color: #4CAF50; /* Highlight the 'D' */
+}
+
+/* Menu */
+.menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin: 0 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.menu li hr {
+  margin: 0;
+  border: 1px solid #4CAF50;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+}
+
+/* Search and user section */
+.nav-login {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Cart and login button */
+.login {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.login:hover {
+  background-color: #45a049;
+}
+
+.cart {
+  max-width: 30px;
+}
+
+.nav-cart-count {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 12px;
+  display: inline-block;
+  text-align: center;
+}
+
+/* User avatar */
+.nav .nav-login img {
+  max-height: 60px;
+  max-width: 60px;
+  border-radius: 50%;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  /* Logo container */
-  .nav-logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-  }
-  
-  .brand {
-    font-size: 28px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .brand .D {
-    color: #007bff;
-  }
-  
-  /* Menu container */
+
   .menu {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .menu li {
-    margin: 0 20px;
-    position: relative;
-  }
-  
-  .menu li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-  }
-  
-  .menu li:hover a {
-    color: #007bff;
-  }
-  
-  /* Underline for active menu item */
-  .menu li hr {
-    position: absolute;
-    bottom: -10px;
-    left: 0;
+    flex-direction: column;
     width: 100%;
-    border: 2px solid #007bff;
-    margin: 0;
   }
-  
-  /* User greeting text */
-  .nav-user-greeting {
-    font-size: 18px;
-    color: #333;
-    margin-right: 20px;
+
+  .menu li {
+    margin: 5px 0;
+    text-align: left;
+    width: 100%;
   }
-  
-  /* Login button and cart icon container */
+
+  .nav-logo {
+    justify-content: space-between;
+    width: 100%;
+  }
+
   .nav-login {
-    display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
   }
-  
-  .login {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .login:hover {
-    background-color: #0056b3;
-  }
-  
-  .cart {
-    width: 30px;
-    height: 30px;
-    margin-left: 20px;
-    position: relative;
-  }
-  
+
   .nav-cart-count {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background-color: #ff0000;
-    color: #fff;
-    border-radius: 50%;
-    padding: 5px 10px;
-    font-size: 14px;
+    display: inline-block;
   }
-  
-  @media (max-width: 768px) {
-    .menu {
-      display: none;
-    }
-  
-    .search-container {
-      margin: 10px 0;
-    }
-  
-    .nav {
-      flex-direction: column;
-      padding: 10px;
-    }
-  
-    .nav-login {
-      margin-top: 10px;
-    }
+}
+
+@media (max-width: 480px) {
+  .brand {
+    font-size: 20px;
   }
-  
+
+  .menu {
+    display: none; /* Hide the menu on very small screens */
+  }
+
+  /* Add a hamburger menu icon for mobile */
+  .nav .hamburger {
+    display: block;
+    cursor: pointer;
+    font-size: 24px;
+  }
+}

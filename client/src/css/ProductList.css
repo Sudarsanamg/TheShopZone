@@ -1,0 +1,101 @@
+/* Add some global styles for the page */
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  } */
+  
+  /* Container for the entire product list page */
+  .product-list-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Style the dropdown */
+  #dropdown {
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
+  /* Product item styling */
+  .product-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s;
+    cursor: pointer;
+  }
+  
+  .product-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Image styling */
+  .product-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  /* Text styling */
+  .product-item p {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 5px 0;
+    color: #333;
+    text-align: center;
+  }
+  
+  .product-item h4 {
+    font-size: 18px;
+    color: #888;
+    margin-bottom: 10px;
+  }
+  
+  /* Product list grid */
+  .product-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .product-list-container {
+      padding: 10px;
+    }
+  
+    /* Adjust grid for smaller screens */
+    .product-list-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+  }
+  
+  @media (max-width: 480px) {
+    /* Make dropdown full width on very small screens */
+    #dropdown {
+      width: 100%;
+    }
+  
+    /* Adjust product text size for mobile */
+    .product-item p, .product-item h4 {
+      font-size: 14px;
+    }
+  
+    /* Adjust grid for very small screens */
+    .product-list-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
