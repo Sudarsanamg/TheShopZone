@@ -47,7 +47,9 @@ const navigate=useNavigate();
     <>
     <div className="nav">
     <div className="nav-logo">
-      <img className='logo' src={logo_image} alt="logo" />
+      <img className='logo' src={logo_image} alt="logo" onClick={()=>{
+        navigate('/')
+      }} />
         <h1 className='brand'><span className='D'>D</span> Mart</h1>
     </div>
     <Search />

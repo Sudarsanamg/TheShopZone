@@ -7,9 +7,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const Shop = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const {user} = location.state? location.state : {displayName:""};
+  let {user} = location.state? location.state : {displayName:""};
   // const accessToken = localStorage.getItem('accessToken');
-  console.log(user)
+  // console.log(user)
+  let person=localStorage.getItem('person');
+  user=person;
+
+  
   useEffect(() => {
 
     // console.log('User:', user);
