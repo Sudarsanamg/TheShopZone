@@ -1,82 +1,82 @@
-import React from 'react'
-import { useLocation } from 'react-router-dom';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signInWithGoogle, signOutFromGoogle } from '../firebaseconfig.js';
+import { signOutFromGoogle } from '../firebaseconfig.js';
+import axios from 'axios';
 
-import axios from 'axios'
-
+const main_server_URL = import.meta.env.VITE_API_MAIN_SERVER_URL;
 
 const Home = () => {
-    // const location = useLocation();
-    // const user=location.state.user;
-    // const userMail=user.email;
-    const [user,setUser]=React.useState('')
-    const navigate = useNavigate();
-    const [products,setProducts]=React.useState([]);
-    const accessToken=localStorage.getItem('accessToken')
+  const [user, setUser] = React.useState('');
+  const navigate = useNavigate();
+  const [products, setProducts] = React.useState([]);
+  const accessToken = localStorage.getItem('accessToken');
+  const [orders,setOrders]=React.useState([]);
 
-    // console.log(accessToken)
+  const routeAddProduct = () => {
+    navigate('/addProduct');
+  };
 
+  const routeHandleMyProducts = () => {
+    navigate('/myProducts');
+  };
 
-    const routeAddProduct =()=>{
-      navigate('/addProduct')
+  const SignOut = async () => {
+    try {
+      await signOutFromGoogle();
+      localStorage.removeItem('accessToken');
+      navigate('/');
+    } catch (error) {
+      localStorage.removeItem('accessToken');
+      navigate('/');
     }
-    // console.log(user)
+  };
 
-    const routeHandleMyProducts =()=>{
-      
-      navigate('/myProducts')
+  React.useEffect(() => {
+    if (accessToken == null) {
+      navigate('/');
+      return;
     }
 
-    const SignOut=()=>{
+    const getProducts = async () => {
       try {
-        signOutFromGoogle().then(navigate('/')).catch((e)=>{
-          localStorage.removeItem('accessToken')
-        navigate('/')
-        })
-
+        const response = await axios.post(
+          `${main_server_URL}/products/getProduct`,
+          { email: user.email },
+          // {
+          //   headers: {
+          //     Authorization: `Bearer ${accessToken}`,
+          //   },
+          // }
+        );
+        setUser(response.data.user);
+        setProducts(response.data.user.products);
       } catch (error) {
-        localStorage.removeItem('accessToken')
-        navigate('/')
+        console.log(error);
       }
-    }
+    };
 
-    React.useEffect(()=>{
-      // console.log(accessToken)
-      if(accessToken==null){
-        navigate('/')
-      }
-      const getProducts=async()=>{
-        // console.log(accessToken)
-        try {
-          await axios.post('http://localhost:3004/authenticateJWT',{
-            headers: {
-              'Authorization': `Bearer ${accessToken}`,
-            }
-          }).then((response)=>{setUser(response.data.user);setProducts(response.data.user.products) }).catch((error)=>console.log(error))
-        
-          
-        } catch (error) {
-          console.log(error)
-        }
-       
-      }
-      getProducts();
-    
-    },[])
+    getProducts();
+  }, [ navigate, user.email]);
+
+
+
 
   return (
     <div>
-      <button onClick={routeAddProduct}>AddProduct</button>
-      <button onClick={SignOut}>SignOut</button>
-      <p>
-      {user.name}
-      </p>
-      <button onClick={routeHandleMyProducts}>My products</button>
-      
-      
+      <button onClick={routeAddProduct}>Add Product</button>
+      <button onClick={SignOut}>Sign Out</button>
+      <p>{user.name}</p>
+      <button onClick={routeHandleMyProducts}>My Products</button>
+      <div>
+        <p>Orders</p>
+        <div>
+          {orders.length>1 ? orders.map((doc,index)=>(
+            <p key={index}>{doc.name}</p>
+          )) :"No orders"}
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

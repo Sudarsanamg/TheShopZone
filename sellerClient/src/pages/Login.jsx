@@ -4,6 +4,7 @@ import { signInWithGoogle, signOutFromGoogle } from '../firebaseconfig.js';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+const main_server_URL = import.meta.env.VITE_API_MAIN_SERVER_URL;
 
 
 
@@ -23,15 +24,18 @@ const Login = () => {
             // console.log(user);
             const person={displayName:user.displayName,email:user.email,photoURL:user.photoURL};
            
-            const response=await axios.post('http://localhost:3000/accounts/loginUservOAuth',{
+            const response=await axios.post(`${main_server_URL}/accounts/loginSellervOAuth`,{
               email:person.email
             })
+
 
             console.log(response)
             localStorage.removeItem('accessToken');
 
             localStorage.setItem('accessToken',response.data.accessToken);
             localStorage.setItem('refreshToken',response.data.refreshToken);
+
+
               
             navigate('/home',{state:{user:person}});
             
@@ -65,14 +69,14 @@ const Login = () => {
   <h1 className="login_head">SELLER LOGIN</h1>
 
   <input 
-   class="input-field"
+   className="input-field"
     type="text" 
     value={email} 
     onChange={(e) => setEmail(e.target.value)} 
     placeholder="Email Address"
   />
   <input 
-  class="input-field"
+  className="input-field"
     type="password" 
     value={password}
     onChange={(e) => setPassword(e.target.value)} 
