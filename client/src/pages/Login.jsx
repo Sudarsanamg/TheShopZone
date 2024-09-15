@@ -45,20 +45,34 @@ const Login = () => {
     }
 
     const handlelogin =async()=>{
-      await axios.post(`${main_server_URL}/accounts/loginSeller`,{
+      await axios.post(`${main_server_URL}/accounts/loginUser`,{
         email:email,
         password:password
       }).then((res)=>{
-        console.log(res)
-        let seller=res.data.seller;
-        const person={displayName:seller.name,email:seller.email,photoURL:seller.photoURL? user.photoURL:""};
+        // console.log(res)
+        let user=res.data.user;
+        const person={displayName:user.name,email:user.email,photoURL:user.photoURL? user.photoURL:""};
         // console.log(person)
-        console.log(res)
+        // console.log(res)
         const accessToken=res.data.accessToken;
         const refreshToken=res.data.refreshToken;
         localStorage.setItem('accessToken',accessToken)
         localStorage.setItem('refreshToken',refreshToken)
-        navigate('/home',{state:{user:person}});
+
+
+        
+        localStorage.removeItem('person')
+        let str=JSON.stringify(person)
+        localStorage.setItem('person',str);
+        localStorage.removeItem('accessToken');
+        // console.log(response);
+        localStorage.setItem('UserId',res.data.user._id);
+
+        // localStorage.setItem('accessToken',response.data.accessToken);
+        // localStorage.setItem('refreshToken',response.data.refreshToken);
+          
+        navigate('/',{state:{user:person}});
+    
       }).catch((error)=>{
         alert(error)
       })
@@ -69,14 +83,14 @@ const Login = () => {
   <h1 className="login_head">User LOGIN</h1>
 
   <input 
-   class="input-field"
+   className="input-field"
     type="text" 
     value={email} 
     onChange={(e) => setEmail(e.target.value)} 
     placeholder="Email Address"
   />
   <input 
-  class="input-field"
+  className="input-field"
     type="password" 
     value={password}
     onChange={(e) => setPassword(e.target.value)} 

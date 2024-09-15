@@ -18,7 +18,7 @@ const SignUp = () => {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [confirmPassword, setConfirmPassword] = React.useState('');
-    const [phone,setPhone] =React.useState('')
+    // const [phone,setPhone] =React.useState('')
 
 
     const createRandom=()=>{
@@ -92,11 +92,12 @@ const SignUp = () => {
         name:name,
         email:email,
         password:password,
-        phone:phone
       }
-      const response= await axios.post(`${main_server_URL}/accounts/createSeller`,{
+      const response= await axios.post(`${main_server_URL}/accounts/createUser`,{
         data:data
       });
+      alert('account created Successfully')
+      navigate('/login')
 
       }
     }
@@ -108,7 +109,7 @@ const SignUp = () => {
       <input type="text"value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter your email Address *" />
       <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}placeholder="Password" />
       <input type="password"value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} placeholder="Confirm Password" />
-      <input type="text" value={phone} onChange={(e)=>setPhone(e.target.value)} placeholder='Enter your phone number' />
+      {/* <input type="text" value={phone} onChange={(e)=>setPhone(e.target.value)} placeholder='Enter your phone number' /> */}
       <button onClick={handleSignUp}>Sign Up</button>
       <label>Already have an account?</label>
       <a href="/">Login</a>

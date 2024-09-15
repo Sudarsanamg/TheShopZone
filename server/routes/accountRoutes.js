@@ -24,7 +24,12 @@ router.post('/loginUservOAuth',accountController.loginUservOAuth)
 //seller
 //without google seller
 router.post('/createSeller',accountController.createSeller)
+router.post('/createUser',accountController.createUser)
 router.post('/loginSeller',accountController.loginSeller)
+router.post('/loginUser',accountController.loginUser)
+
+
+
 //with google seller
 router.post('/createSellervOauth',accountController.createSellervOauth)
 router.post('/loginSellervOAuth',accountController.loginSellervOAuth)
