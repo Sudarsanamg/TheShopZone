@@ -41,6 +41,7 @@ const Login = () => {
             
         }).catch((error) => {
             console.log(error);
+            alert('user Not found')
         });
     }
 

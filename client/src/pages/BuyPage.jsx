@@ -12,6 +12,11 @@ const BuyPage = () => {
   const [pincode, setPinCode] = React.useState('');
   const [quantity, setQuantity] = React.useState(1);
 
+
+  const proceedPayment=()=>{
+       alert('..')
+  }
+
   return (
     <div className="buy-page-container">
       <h2 className="page-title">Delivery Details</h2>
@@ -74,7 +79,9 @@ const BuyPage = () => {
         <p>${product.price * quantity}</p>
       </div>
 
+      <div  onClick={()=>proceedPayment()}>
       <button className="continue-button">Continue</button>
+      </div>
     </div>
   );
 }
