@@ -22,39 +22,51 @@ const Header = (param) => {
   return (
     <>
       <div className="nav">
-        <div className="nav-logo">
-          <img className="logo" src={logo_image} alt="logo" onClick={() => navigate('/')} />
-          <h1 className="brand"><span className="D">D</span> Mart</h1>
+        <div className="nav-logo" onClick={() => navigate('/')}>
+          <img className="logo" src={logo_image} alt="logo" />
+          <h1 className="brand">
+            <span className="D">D</span> Mart
+          </h1>
         </div>
+
         <Search />
-       
+
         <ul className="menu">
           <li onClick={() => setMenu('shop')}>
             <Link style={{ textDecoration: 'none' }} to='/'>Shop</Link>
             {menu === 'shop' && <hr />}
           </li>
           <li onClick={() => setMenu('mens')}>
-            <Link style={{ textDecoration: 'none' }} to='/mens'></Link>
+            <Link style={{ textDecoration: 'none' }} to='/mens'>Mens</Link>
+            {menu === 'mens' && <hr />}
           </li>
           <li onClick={() => setMenu('womens')}>
-            <Link style={{ textDecoration: 'none' }} to='/contact-us'>Contact us</Link>
+            <Link style={{ textDecoration: 'none' }} to='/contact-us'>Contact Us</Link>
+            {menu === 'womens' && <hr />}
           </li>
           <li onClick={() => setMenu('kids')}>
-            <Link style={{ textDecoration: 'none' }} to='/about-us'>About us</Link>
+            <Link style={{ textDecoration: 'none' }} to='/about-us'>About Us</Link>
+            {menu === 'kids' && <hr />}
           </li>
-        <div>
-          <p>{user.displayName ? `Hello ${user.displayName}!` : 'Login please..'}</p>
-        </div>
         </ul>
-        <div>
-          <img src={user.photoURL} style={{ maxHeight: 60, maxWidth: 60, borderRadius: 15 }} alt="user" />
-        </div>
-        <div className="nav-login">
-          <button className="login" onClick={handleLogout}>Logout</button>
-          <Link to='/cart'>
-            <img className="cart" src={cart_image} alt="cart" />
-          </Link>
-          {/* <div className="nav-cart-count">5+</div> */}
+        
+
+        <div className="nav-user">
+          <div className="nav-user-details">
+            <p>{user?.displayName ? `Hello ${user.displayName}!` : 'Login please..'}</p>
+            </div>
+            <div>
+            <p>{user?.photoURL && (
+              <img src={user.photoURL} alt="user" className="user-img" />
+            )}</p>
+            
+          </div>
+          <div className="nav-login">
+            <button className="login" onClick={handleLogout}>Logout</button>
+            <Link to='/cart'>
+              <img className="cart" src={cart_image} alt="cart" />
+            </Link>
+          </div>
         </div>
       </div>
     </>

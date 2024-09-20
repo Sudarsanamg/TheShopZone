@@ -17,6 +17,10 @@ const BuyPage = () => {
 
 
   const proceedPayment=async()=>{
+    if(street==='' || city==='' || state==='' || pincode===''){
+      alert('Please fill the address details')
+      return;
+    }
        axios.post(`${main_server_URL}/orders/create-order`,{
            user:user.displayName,
            quantity:quantity,
@@ -93,7 +97,8 @@ const BuyPage = () => {
 
       <div className="total-price">
         <h3>Total Price</h3>
-        <p>${product.price * quantity}</p>
+        <p>Rs {product.price * quantity}/-</p>
+        <p>* This purchase is not refundable </p>
       </div>
 
       <div  onClick={()=>proceedPayment()}>

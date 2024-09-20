@@ -149,6 +149,9 @@
 .nav-user {
   display: flex;
   align-items: center;
+  margin-left: 20px;
+  cursor: pointer;
+  justify-items: center;
 }
 
 .nav-user img {

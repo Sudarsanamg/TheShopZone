@@ -35,6 +35,7 @@ const Product = () => {
       <p className="product-price">₹{product.price}</p>
       <p className="product-description">{product.description}</p>
       <Rating name="read-only" value={product.rating} readOnly />
+      <p>* Product will be delivered with in 7 - 10 days (only in TamilNadu and kerala)</p>
       <div className="button-container">
         <button className="buy-button" onClick={handleBuy}>Buy Now</button>
         <button className="cart-button" onClick={handleAddToCart}>Add to Cart</button>
