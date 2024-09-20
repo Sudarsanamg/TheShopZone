@@ -10,7 +10,7 @@ const Shoptop = () => {
           <p className='new'>NEW ARRIVALS ONLY</p>
           <h1 >Collections</h1>
           <h2>for everyone</h2>
-          <button className='btn-latest'>Latest Collection →</button>
+          <button className='btn-latest'>Latest Collection</button>
         </div>
       </div>
       <div className="hero-right">

@@ -11,6 +11,10 @@ import Product from "./pages/product";
 import Cart from "./pages/cart";
 import ProductList from './pages/ProductList';
 import BuyPage from './pages/BuyPage';
+import Contactus from './pages/Contactus';
+import Aboutus from './pages/Aboutus';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 // import Product from './pages/Product';
 // import Shop_category from "./pages/shop_category";
 // import Login_page from "./pages/login_page";
@@ -31,6 +35,8 @@ function App() {
           <Route path='/productList' Component={ProductList} />
           <Route path='/product' Component={Product}/>
           <Route path='/buy' Component={BuyPage}/>
+          <Route path='/contact-us' Component={Contactus} />
+          <Route path='/about-us' Component={Aboutus}/>
         
 
 

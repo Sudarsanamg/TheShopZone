@@ -27,27 +27,25 @@ const Header = (param) => {
           <h1 className="brand"><span className="D">D</span> Mart</h1>
         </div>
         <Search />
+       
         <ul className="menu">
           <li onClick={() => setMenu('shop')}>
             <Link style={{ textDecoration: 'none' }} to='/'>Shop</Link>
             {menu === 'shop' && <hr />}
           </li>
           <li onClick={() => setMenu('mens')}>
-            <Link style={{ textDecoration: 'none' }} to='/mens'>Mens</Link>
-            {menu === 'mens' && <hr />}
+            <Link style={{ textDecoration: 'none' }} to='/mens'></Link>
           </li>
           <li onClick={() => setMenu('womens')}>
-            <Link style={{ textDecoration: 'none' }} to='/womens'>Womens</Link>
-            {menu === 'womens' && <hr />}
+            <Link style={{ textDecoration: 'none' }} to='/contact-us'>Contact us</Link>
           </li>
           <li onClick={() => setMenu('kids')}>
-            <Link style={{ textDecoration: 'none' }} to='/kids'>Kids</Link>
-            {menu === 'kids' && <hr />}
+            <Link style={{ textDecoration: 'none' }} to='/about-us'>About us</Link>
           </li>
-        </ul>
         <div>
           <p>{user.displayName ? `Hello ${user.displayName}!` : 'Login please..'}</p>
         </div>
+        </ul>
         <div>
           <img src={user.photoURL} style={{ maxHeight: 60, maxWidth: 60, borderRadius: 15 }} alt="user" />
         </div>
@@ -56,7 +54,7 @@ const Header = (param) => {
           <Link to='/cart'>
             <img className="cart" src={cart_image} alt="cart" />
           </Link>
-          <div className="nav-cart-count">5+</div>
+          {/* <div className="nav-cart-count">5+</div> */}
         </div>
       </div>
     </>

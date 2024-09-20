@@ -37,7 +37,8 @@ const Shop = () => {
     
       <Header props={user} />
       <Shoptop />
-      <Popular />
+      
+      
     </>
   );
 };

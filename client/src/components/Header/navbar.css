@@ -1,152 +1,207 @@
-/* Global styles */
+/* navbar.css */
 
-/* Navigation bar styles */
 .nav {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
   padding: 10px 20px;
-  background-color: #333;
-  color: white;
-  flex-wrap: wrap;
-  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* Logo and brand */
 .nav-logo {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .logo {
-  max-width: 50px;
-  cursor: pointer;
+  width: 40px;
+  height: 40px;
 }
 
 .brand {
   margin-left: 10px;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
+  color: #333;
 }
 
-.brand .D {
-  color: #4CAF50; /* Highlight the 'D' */
+.D {
+  color: #ff6347;
+}
+
+/* Search Bar */
+.nav-search {
+  position: relative;
+  flex-grow: 1;
+  margin: 0 20px;
+}
+
+.nav-search input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  padding-right: 40px; /* Leaves space for the search icon */
+}
+
+.nav-search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.nav-search-icon img {
+  width: 20px;
+  height: 20px;
 }
 
 /* Menu */
 .menu {
   display: flex;
   list-style: none;
-  padding: 0;
+  gap: 30px;
   margin: 0;
+  padding: 0;
 }
 
 .menu li {
-  margin: 0 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
   cursor: pointer;
   position: relative;
+  padding-bottom: 5px;
+}
+
+.menu li:hover,
+.menu li.active {
+  color: #ff6347;
 }
 
 .menu li hr {
-  margin: 0;
-  border: 1px solid #4CAF50;
+  border: none;
+  height: 2px;
+  background-color: #ff6347;
+  margin-top: 5px;
+  width: 100%;
   position: absolute;
   bottom: -5px;
   left: 0;
-  right: 0;
 }
 
-/* Search and user section */
+.menu li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Login and Cart */
 .nav-login {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
-/* Cart and login button */
 .login {
-  background-color: #4CAF50;
+  background-color: #ff6347;
   color: white;
   border: none;
-  padding: 5px 10px;
-  cursor: pointer;
   border-radius: 5px;
+  padding: 8px 20px;
+  font-size: 16px;
+  cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .login:hover {
-  background-color: #45a049;
+  background-color: #ff4500;
 }
 
 .cart {
-  max-width: 30px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
 }
 
 .nav-cart-count {
-  background-color: red;
+  background-color: #ff6347;
   color: white;
   border-radius: 50%;
-  padding: 5px;
-  font-size: 12px;
-  display: inline-block;
-  text-align: center;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  position: absolute;
+  top: -8px;
+  right: -10px;
 }
 
-/* User avatar */
-.nav .nav-login img {
-  max-height: 60px;
-  max-width: 60px;
+/* User Info */
+.nav-user {
+  display: flex;
+  align-items: center;
+}
+
+.nav-user img {
   border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 15px;
 }
 
-/* Responsive styles */
+.nav-user p {
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+}
+
+/* Mobile view (hamburger menu) */
+.hamburger-menu {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;
     align-items: flex-start;
+    padding: 15px;
+  }
+
+  .nav-search {
+    width: 100%;
+    margin-bottom: 10px;
   }
 
   .menu {
-    flex-direction: column;
-    width: 100%;
+    display: none;
   }
 
-  .menu li {
-    margin: 5px 0;
-    text-align: left;
-    width: 100%;
+  .hamburger-menu {
+    display: block;
+    cursor: pointer;
   }
 
-  .nav-logo {
-    justify-content: space-between;
-    width: 100%;
+  .hamburger-menu img {
+    width: 30px;
+    height: 30px;
   }
 
   .nav-login {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
-    width: 100%;
+    display: none; /* Hidden on mobile, put in hamburger menu */
   }
 
-  .nav-cart-count {
-    display: inline-block;
-  }
-}
-
-@media (max-width: 480px) {
-  .brand {
-    font-size: 20px;
-  }
-
-  .menu {
-    display: none; /* Hide the menu on very small screens */
-  }
-
-  /* Add a hamburger menu icon for mobile */
-  .nav .hamburger {
-    display: block;
-    cursor: pointer;
-    font-size: 24px;
+  .nav-user img {
+    width: 40px;
+    height: 40px;
   }
 }

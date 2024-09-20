@@ -1,6 +1,9 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 import '../css/BuyPage.css'; // Import the CSS file for styling
+const main_server_URL = import.meta.env.VITE_API_MAIN_SERVER_URL;
+
 
 const BuyPage = () => {
   const location = useLocation();
@@ -13,8 +16,22 @@ const BuyPage = () => {
   const [quantity, setQuantity] = React.useState(1);
 
 
-  const proceedPayment=()=>{
-       alert('..')
+  const proceedPayment=async()=>{
+       axios.post(`${main_server_URL}/orders/create-order`,{
+           user:user.displayName,
+           quantity:quantity,
+           product:product.name,
+           Address:street +', '+city+', '+state+', '+pincode
+       })
+        .then((res)=>{
+          console.log(res)
+          alert('Order Placed Successfully')
+        })
+        .catch((err)=>{
+          console.log(err)
+          alert('Something went wrong')
+        })
+
   }
 
   return (

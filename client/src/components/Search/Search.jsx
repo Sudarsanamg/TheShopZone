@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+
 import "../../css/Search.css";
 
 const apiUrl = import.meta.env.VITE_API_MAIN_SERVER_URL;
@@ -25,10 +26,15 @@ const Search = () => {
     }
   };
 
-  const handleRoute =(e,name)=>{
-    // console.log(name)
-    navigate('/productList',{state:{productQuery : name}});
-  }
+  const handleRoute = (e, name) => {
+    navigate('/productList', { state: { productQuery: name } });
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleRoute(e, query);
+    }
+  };
 
   return (
     <div className="search-container">
@@ -36,13 +42,17 @@ const Search = () => {
         type="text" 
         value={query} 
         onChange={(e) => handleSearch(e)} 
+        onKeyDown={handleKeyDown}
         placeholder='Search products...' 
         className="search-input"
       />
+      <div >
+        <button onClick={(e) => handleRoute(e, query)}>Search</button>
+      </div>
       {response.length >= 1 && (
         <div className="search-results">
           {response.map((item, index) => (
-            <div key={index} className="search-result-item" onClick={(e)=>handleRoute(e,item.name)}  >{item.name}</div>
+            <div key={index} className="search-result-item" onClick={(e) => handleRoute(e, item.name)}>{item.name}</div>
           ))}
         </div>
       )}
