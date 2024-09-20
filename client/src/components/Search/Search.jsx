@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { FaSearch } from "react-icons/fa";
 
 
 import "../../css/Search.css";
@@ -46,9 +47,9 @@ const Search = () => {
         placeholder='Search products...' 
         className="search-input"
       />
-      <div >
-        <button onClick={(e) => handleRoute(e, query)}>Search</button>
-      </div>
+        {/* <p style={{cursor:'pointer'}} onClick={(e) => handleRoute(e, query)}><FaSearch /></p> */}
+     
+      
       {response.length >= 1 && (
         <div className="search-results">
           {response.map((item, index) => (
