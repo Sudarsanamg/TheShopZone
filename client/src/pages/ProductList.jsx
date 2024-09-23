@@ -65,7 +65,7 @@ const ProductList = () => {
             <img src={item.image} alt="" />
             <p>{item.name}</p>
             <p>{item.description}</p>
-            <h4>{item.price}</h4>
+            <h4>Rs {item.price}</h4>
             <Rating name="read-only" value={item.rating} readOnly />
           </div>
         ))}
