@@ -15,6 +15,10 @@ const BuyPage = () => {
   const [pincode, setPinCode] = React.useState('');
   const [quantity, setQuantity] = React.useState(1);
 
+  let name= localStorage.getItem('person')
+  name=JSON.parse(name)
+  // console.log(name)
+
 
   const proceedPayment=async()=>{
     if(street==='' || city==='' || state==='' || pincode===''){
@@ -22,13 +26,13 @@ const BuyPage = () => {
       return;
     }
        axios.post(`${main_server_URL}/orders/create-order`,{
-           user:user.displayName,
+           user:user===null ? name.displayName :  user.displayName ,
            quantity:quantity,
            product:product.name,
            Address:street +', '+city+', '+state+', '+pincode
        })
         .then((res)=>{
-          console.log(res)
+          // console.log(res)
           alert('Order Placed Successfully')
         })
         .catch((err)=>{
