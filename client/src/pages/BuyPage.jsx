@@ -34,6 +34,7 @@ const BuyPage = () => {
         .then((res)=>{
           // console.log(res)
           alert('Order Placed Successfully')
+          // navigator.navigate('/');
         })
         .catch((err)=>{
           console.log(err)
