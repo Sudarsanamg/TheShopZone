@@ -50,20 +50,25 @@ const SignUp = () => {
                 name:person.displayName,
                 email:person.email,
                 password:createRandom(),
-                phone:1234567890
+                phone:12345674199884490
+              }
+              console.log(seller)
+              try {
+                await axios.post('http://localhost:3000/accounts/createSellervOauth',{
+                  seller:seller
+                }).then((res)=>{
+                  const accessToken=res.data.accessToken;
+                  const refreshToken=res.data.refreshToken;
+                  localStorage.setItem('accessToken',accessToken );
+                  localStorage.setItem('refreshToken',refreshToken);
+                  navigate('/home',{state:{user:person}});
+                }).catch((error)=>{
+                  alert(error)
+                })
+              } catch (error) {
+                console.log(error)
               }
               
-              await axios.post('http://localhost:3000/accounts/createSellervOauth',{
-                seller:seller
-              }).then((res)=>{
-                const accessToken=res.data.accessToken;
-                const refreshToken=res.data.refreshToken;
-                localStorage.setItem('accessToken',accessToken );
-                localStorage.setItem('refreshToken',refreshToken);
-                navigate('/home',{state:{user:person}});
-              }).catch((error)=>{
-                alert(error)
-              })
 
            
             }

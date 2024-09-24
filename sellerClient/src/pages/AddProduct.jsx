@@ -43,9 +43,10 @@ const AddProduct = () => {
                     quantity:quantity
                    
                 }
+                console.log(product)
 
           try {
-            const response=await axios.post('http://localhost:3000/products/getProducts', 
+            const response=await axios.post('http://localhost:3000/products/addProduct', 
               { product:product},{
                 headers: {
                   'Authorization': `Bearer ${accessToken}`,
@@ -53,6 +54,7 @@ const AddProduct = () => {
               }
               );
             console.log(response.data)
+            alert('Product added Successfully!')
             navigate('/home')   
             
             

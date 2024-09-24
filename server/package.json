@@ -1,12 +1,8 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "startAuthServer": "nodemon AuthServer.js",
+    "start": "concurrently \"nodemon index.js\" \"nodemon AuthSeller.js\" \"nodemon uploadImage.js\"",
     "startUploadImageServer": "nodemon uploadImage.js"
   },
   "author": "",
@@ -23,7 +19,8 @@
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.1",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "concurrently": "^8.2.2"
   },
   "devDependencies": {
     "prisma": "^5.17.0"

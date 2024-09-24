@@ -37,7 +37,7 @@ body {
     align-items: center;
   }
   
-  input[type="text"],
+  /* input[type="text"],
   input[type="file"],
   button {
     width: 100%;
@@ -54,7 +54,7 @@ body {
   button:focus {
     outline: none;
     border-color: #007bff;
-  }
+  } */
   
   button {
     background-color: #4299e1;

@@ -1,0 +1,29 @@
+name: Deploy to Azure Services
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+
+      - name: Install Dependencies
+        run: cd server && npm install
+
+      - name: Build and Deploy
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'shopz'
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile }}
+          package: './server'

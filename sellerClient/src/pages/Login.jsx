@@ -3,6 +3,9 @@ import '../css/Login.css';
 import { signInWithGoogle, signOutFromGoogle } from '../firebaseconfig.js';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+const main_server_URL = import.meta.env.VITE_API_MAIN_SERVER_URL;
+
 
 
 const Login = () => {
@@ -21,13 +24,18 @@ const Login = () => {
             // console.log(user);
             const person={displayName:user.displayName,email:user.email,photoURL:user.photoURL};
            
-            const response=await axios.post('http://localhost:3000/accounts/loginSellervOAuth',{
+            const response=await axios.post(`${main_server_URL}/accounts/loginSellervOAuth`,{
               email:person.email
             })
+
+
+            console.log(response)
             localStorage.removeItem('accessToken');
 
             localStorage.setItem('accessToken',response.data.accessToken);
             localStorage.setItem('refreshToken',response.data.refreshToken);
+
+
               
             navigate('/home',{state:{user:person}});
             
@@ -57,24 +65,44 @@ const Login = () => {
     }
 
   return (
-    <div className="container">
-      <h1></h1>
-        <h1>Seller Login</h1>
+    <div className="Login_container">
+  <h1 className="login_head">SELLER LOGIN</h1>
 
-        <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email Address"/>
-        <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password" />
-        <div>
-          <input type="checkbox" id="remember-me" />
-          <label htmlFor="remember-me">Remember me</label>
-        </div>
-        <button onClick={handlelogin}>Log in</button>
-        <p>or</p>
-        <button onClick={handleLoginGoogle}>Continue with Google</button>
-        
-        <p>Dont have an account? <a href="/signup">Sign up</a></p>
+  <input 
+   className="input-field"
+    type="text" 
+    value={email} 
+    onChange={(e) => setEmail(e.target.value)} 
+    placeholder="Email Address"
+  />
+  <input 
+  className="input-field"
+    type="password" 
+    value={password}
+    onChange={(e) => setPassword(e.target.value)} 
+    placeholder="Password" 
+  />
 
-        <p className="developer">Developer Name</p>
-    </div>
+  <button className="btn-login" onClick={handlelogin}>Login</button>
+
+  <p className="other">Login with</p>
+
+  <div className="Other-login">
+  <button className="btn-google-icon" onClick={handleLoginGoogle}>
+    <i className="fab fa-google"></i> {/* Font Awesome Google Icon */}
+  </button>
+  
+  <button className="btn-facebook-icon">
+    <i className="fab fa-facebook-f"></i> {/* Font Awesome Facebook Icon */}
+  </button>
+</div>
+
+  
+  <p className="p">
+    Don’t have an account? <a className="sign-link" href="/signup">Sign up</a>
+  </p>
+</div>
+
   )
 }
 
